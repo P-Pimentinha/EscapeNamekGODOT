@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtp0e7r8t2777"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_1gjvh"]
+[ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="1_unf7o"]
+[ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="2_yro5d"]
+[ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="3_dbe7j"]
+[ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="4_1f7ua"]
+[ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="5_k3w0o"]
+[ext_resource type="PackedScene" uid="uid://bjkesqfcrj4im" path="res://scenes/objectives/OrbOfLight.tscn" id="7_bxjy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvos2"]
+size = Vector2(20, 650)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1gjvh")
+
+[node name="BackGround" parent="." instance=ExtResource("1_unf7o")]
+
+[node name="Player" parent="." instance=ExtResource("2_yro5d")]
+position = Vector2(104, 528)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Marker2D" type="Marker2D" parent="Camera2D"]
+position = Vector2(656, -52)
+
+[node name="Marker2D2" type="Marker2D" parent="Camera2D"]
+position = Vector2(656, 28)
+
+[node name="Marker2D3" type="Marker2D" parent="Camera2D"]
+position = Vector2(656, 108)
+
+[node name="Marker2D4" type="Marker2D" parent="Camera2D"]
+position = Vector2(656, 188)
+
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(-664, -9)
+shape = SubResource("RectangleShape2D_jvos2")
+
+[node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
+
+[node name="hud" parent="." instance=ExtResource("4_1f7ua")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
+process_mode = 2
+
+[node name="OrbOfLight" parent="." instance=ExtResource("7_bxjy7")]
+position = Vector2(592, 544)
+
+[node name="Orb_Spawn_Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="start_game" from="Player" to="." method="_on_player_start_game"]
+[connection signal="area_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Orb_Spawn_Timer" to="." method="_on_orb_spawn_timer_timeout"]

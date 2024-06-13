@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtp0e7r8t2777"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_1gjvh"]
+[ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="1_unf7o"]
+[ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="2_yro5d"]
+[ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="3_dbe7j"]
+[ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="4_1f7ua"]
+[ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="5_k3w0o"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_1gjvh")
+
+[node name="BackGround" parent="." instance=ExtResource("1_unf7o")]
+
+[node name="Player" parent="." instance=ExtResource("2_yro5d")]
+position = Vector2(104, 528)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
+
+[node name="hud" parent="." instance=ExtResource("4_1f7ua")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
+process_mode = 2

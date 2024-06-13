@@ -1,0 +1,140 @@
+[gd_scene load_steps=23 format=3 uid="uid://b37fx1mhr2f28"]
+
+[ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/myImg/Player/idle.png" id="1_88k04"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ivldm"]
+[ext_resource type="Texture2D" uid="uid://us7j4k6to4w3" path="res://assets/myImg/Player/Sprite-0001.png" id="2_oub2a"]
+[ext_resource type="Texture2D" uid="uid://c6j2hrvvmj73t" path="res://assets/myImg/Player/jump.png" id="3_jpw1t"]
+[ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="4_1771s"]
+[ext_resource type="Script" path="res://scenes/player/Idle.gd" id="5_dh1ve"]
+[ext_resource type="Script" path="res://scenes/player/Running.gd" id="6_ucy2e"]
+[ext_resource type="Script" path="res://scenes/player/Jumping.gd" id="7_2w1e6"]
+[ext_resource type="Script" path="res://scenes/player/Falling.gd" id="8_hkjik"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfxeg"]
+atlas = ExtResource("1_88k04")
+region = Rect2(0, 0, 9, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdbwt"]
+atlas = ExtResource("3_jpw1t")
+region = Rect2(0, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbt4m"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jknjr"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5311n"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7eeu"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gphx"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrfg4"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk572"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cifol"]
+atlas = ExtResource("2_oub2a")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jiql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfxeg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdbwt")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbt4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jknjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5311n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7eeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gphx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrfg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk572")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cifol")
+}],
+"loop": true,
+"name": &"run",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65afd"]
+size = Vector2(20, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8t1x"]
+size = Vector2(13, 28)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_ivldm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5jiql")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Run" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3.5)
+shape = SubResource("RectangleShape2D_65afd")
+
+[node name="Idle" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_j8t1x")
+debug_color = Color(0.733333, 0.4, 0.658824, 0.419608)
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_1771s")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource("5_dh1ve")
+
+[node name="Running" type="Node" parent="FSM"]
+script = ExtResource("6_ucy2e")
+
+[node name="Jumping" type="Node" parent="FSM"]
+script = ExtResource("7_2w1e6")
+
+[node name="Falling" type="Node" parent="FSM"]
+script = ExtResource("8_hkjik")
