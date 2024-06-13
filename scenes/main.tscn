@@ -46,6 +46,7 @@ shape = SubResource("RectangleShape2D_jvos2")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
 process_mode = 2
+visible = false
 
 [node name="OrbOfLight" parent="." instance=ExtResource("7_bxjy7")]
 position = Vector2(592, 544)

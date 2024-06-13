@@ -25,8 +25,9 @@ func _ready():
 	screen_size = get_window().size
 	new_game()
 	restart_button.get_node("Button").pressed.connect(restart)
+	
 	player.start_game.connect(start_game_var)
-	spawn_orbs()
+	
 	
 
 func _physics_process(delta):
@@ -34,8 +35,10 @@ func _physics_process(delta):
 	if game_running:
 		update_camera_position(delta)
 		update_ground_position()
-		
-	
+	player_wins()
+	game_over()
+
+#background and camera func
 func update_camera_position(delta):
 	camera_2d.position.x += 400 * delta
 
@@ -77,9 +80,17 @@ func start_game_var():
 	
 	
 func game_over():
-	restart_button.show()
-	get_tree().paused = true
+	if ScoreGlobals.total_current_score < 0:
+		restart_button.show()
+		get_tree().paused = true
 	
+func player_wins():
+	if ScoreGlobals.total_current_score > 1:
+		#restart_button.position.x += 100
+		
+		hud.show_victory_label()
+		restart_button.show()
+		get_tree().paused = true
 
 func restart():
 	ScoreGlobals.reset_total_current_score()

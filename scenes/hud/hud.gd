@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var score_label = $ScoreLabel
 @onready var high_score_label = $HighScoreLabel
 @onready var start_label = $StartLabel
+@onready var color_rect = $ColorRect
+@onready var win_label = $WinLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,4 +17,7 @@ func _process(delta):
 	score_label.text = "Score:" + str(ScoreGlobals.total_current_score)
 	
 func hide_start_label():
-	start_label.visible = false
+	color_rect.visible = false
+
+func show_victory_label():
+	win_label.visible = true
