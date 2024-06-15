@@ -16,6 +16,8 @@ script = ExtResource("1_1gjvh")
 
 [node name="BackGround" parent="." instance=ExtResource("1_unf7o")]
 
+[node name="hud" parent="." instance=ExtResource("4_1f7ua")]
+
 [node name="Player" parent="." instance=ExtResource("2_yro5d")]
 position = Vector2(104, 528)
 
@@ -41,8 +43,6 @@ position = Vector2(-664, -9)
 shape = SubResource("RectangleShape2D_jvos2")
 
 [node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
-
-[node name="hud" parent="." instance=ExtResource("4_1f7ua")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
 process_mode = 2
