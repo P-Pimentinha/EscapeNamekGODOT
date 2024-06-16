@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtp0e7r8t2777"]
+[gd_scene load_steps=9 format=3 uid="uid://dtp0e7r8t2777"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_1gjvh"]
 [ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="1_unf7o"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="3_dbe7j"]
 [ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="4_1f7ua"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="5_k3w0o"]
-[ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="5_ynllq"]
 [ext_resource type="PackedScene" uid="uid://bjkesqfcrj4im" path="res://scenes/objectives/OrbOfLight.tscn" id="7_bxjy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvos2"]
@@ -18,7 +17,6 @@ script = ExtResource("1_1gjvh")
 [node name="BackGround" parent="." instance=ExtResource("1_unf7o")]
 
 [node name="hud" parent="." instance=ExtResource("4_1f7ua")]
-process_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("2_yro5d")]
 position = Vector2(104, 528)
@@ -44,9 +42,6 @@ position = Vector2(656, 188)
 position = Vector2(-664, -9)
 shape = SubResource("RectangleShape2D_jvos2")
 
-[node name="EnemyOne" parent="Camera2D" instance=ExtResource("5_ynllq")]
-position = Vector2(512, 28)
-
 [node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
@@ -59,5 +54,6 @@ position = Vector2(592, 544)
 [node name="Orb_Spawn_Timer" type="Timer" parent="."]
 wait_time = 2.0
 
+[connection signal="start_game" from="Player" to="." method="_on_player_start_game"]
 [connection signal="area_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Orb_Spawn_Timer" to="." method="_on_orb_spawn_timer_timeout"]

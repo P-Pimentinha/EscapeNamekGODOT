@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://lpgbh3a740ln"]
+[gd_scene load_steps=10 format=3 uid="uid://lpgbh3a740ln"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_d37rk"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="1_jan38"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dy8vvnse0lrvv" path="res://assets/myImg/HUD/Color_Rect.png" id="3_3h4pa"]
 [ext_resource type="Texture2D" uid="uid://c2wuvqga734qd" path="res://assets/myImg/objectives/orb32Red.png" id="3_l3bxl"]
 [ext_resource type="Texture2D" uid="uid://cy83ugo5grj7g" path="res://assets/myImg/objectives/orb32yblue.png" id="3_tcg4r"]
+[ext_resource type="Texture2D" uid="uid://d4mdcimym0672" path="res://assets/myImg/HUD/progress_bar/progress_bar_background.png" id="7_b72tg"]
+[ext_resource type="Texture2D" uid="uid://cw5yo1vy0tw4s" path="res://assets/myImg/HUD/progress_bar/progress_bar_overlay.png" id="8_nmxgh"]
+[ext_resource type="Texture2D" uid="uid://kktw1d4ssy51" path="res://assets/myImg/HUD/progress_bar/progress_bar_progress.png" id="9_occmd"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_d37rk")
@@ -115,7 +118,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 4
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -142,6 +145,16 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_jan38")
 theme_override_font_sizes/font_size = 40
 text = "PRESS \"D\" TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartLabel9" type="Label" parent="main_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_jan38")
+theme_override_font_sizes/font_size = 20
+text = "
+\"K\" TO CHECK THE KEYS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -202,3 +215,16 @@ theme_override_font_sizes/font_size = 24
 text = "Press \"R\" to go Back"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 66.0
+grow_horizontal = 2
+texture_under = ExtResource("7_b72tg")
+texture_over = ExtResource("8_nmxgh")
+texture_progress = ExtResource("9_occmd")

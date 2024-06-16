@@ -3,7 +3,7 @@ class_name PlayerMain
 
 @onready var fsm = $FSM as FiniteStateMachine
 @onready var animated_sprite_2d = $AnimatedSprite2D
-signal start_game
+
 #jump
 const GRAVITY : int = 4200
 const JUMP_SPEED : int = -1800
@@ -18,12 +18,13 @@ var speed: float = START_SPEED
 func move():
 	velocity.x = START_SPEED
 	move_and_slide()
-
+	#if is_on_floor():
+		#pass
+		
 func stop():
 	velocity.x = STOP_SPEED
 
-func start_game_signal():
-	start_game.emit()
+
 
 #@onready var run_col = $RunCol
 #@onready var duck_col = $DuckCol

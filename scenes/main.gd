@@ -3,31 +3,23 @@ extends Node
 @onready var player = $Player
 @onready var camera_2d = $Camera2D
 @onready var ground = $Ground
-@export var score: Score
 @onready var hud = $hud
 @onready var restart_button = $CanvasLayer
 @onready var orb_spawn_timer = $Orb_Spawn_Timer
+@onready var marker_position_arr: Array = [$Camera2D/Marker2D, $Camera2D/Marker2D2, $Camera2D/Marker2D3, $Camera2D/Marker2D4]
+var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 
+const PLAYER_START_POSITION := Vector2i(104, 528)
+const CAM_START_POS := Vector2i(576, 324)
 
-@onready var marker_position_arr: Array = [$Camera2D/Marker2D,$Camera2D/Marker2D2,$Camera2D/Marker2D3,$Camera2D/Marker2D4] 
-var orb_scene = preload("res://scenes/objectives/OrbOfLight.tscn")
-
-
-
-const PLAYER_START_POSITION := Vector2i(104,528)
-const CAM_START_POS := Vector2i(576,324)
-
-var screen_size : Vector2i
+var screen_size: Vector2i
 #var game_running: bool = false
 
 func _ready():
-	
 	screen_size = get_window().size
 	new_game()
 	restart_button.get_node("Button").pressed.connect(restart)
-	player.start_game.connect(start_game_var)
-	
-	
+	hud.unpause_game.connect(start_game_var)
 
 func _physics_process(delta):
 	#update ground position
@@ -48,7 +40,6 @@ func update_ground_position():
 	if camera_2d.position.x - ground.position.x > screen_size.x * 1.5:
 		ground.position.x += screen_size.x
 
-
 #orb logic
 func spawn_orbs():
 	var random_index = randi() % marker_position_arr.size()
@@ -59,34 +50,32 @@ func spawn_orbs():
 
 func _on_orb_spawn_timer_timeout():
 	spawn_orbs()
-
-
 	
 #game state
 func new_game():
-	get_tree().paused = false
+	get_tree().paused = true
 	GameControl.restart_game_state()
+	ScoreGlobals.reset_total_current_score()
 	restart_button.hide()
 	player.position = PLAYER_START_POSITION
-	player.velocity = Vector2i(0,0)
+	player.velocity = Vector2i(0, 0)
 	camera_2d.position = CAM_START_POS
-	ground.position = Vector2i(0,0)
-	
+	ground.position = Vector2i(0, 0)
 
 func start_game_var():
+	get_tree().paused = false
 	hud.hide_hud()
 	orb_spawn_timer.start()
 	GameControl.start_game()
 	
-	
 func game_over():
-	if ScoreGlobals.total_current_score < 0:
+	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
 		restart_button.show()
 		GameControl.game_over()
 		get_tree().paused = true
 	
 func player_wins():
-	if ScoreGlobals.total_current_score > 1:
+	if ScoreGlobals.total_current_score >= ScoreGlobals.MAX_SCORE:
 		#restart_button.position.x += 100
 		GameControl.pause_game()
 		hud.show_victory_label()
@@ -94,7 +83,6 @@ func player_wins():
 		get_tree().paused = true
 
 func restart():
-	ScoreGlobals.reset_total_current_score()
 	get_tree().reload_current_scene()
 
 #@onready var dino = $Dino
@@ -232,11 +220,3 @@ func restart():
 	#get_tree().paused = true
 	#game_running = false
 	#game_over_scene.show()
-
-
-
-
-
-
-
-

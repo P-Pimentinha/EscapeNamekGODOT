@@ -16,8 +16,7 @@ func Enter():
 		
 
 func Physics_Update(_delta : float):
-	if Input.is_action_just_pressed("right"):
-		player.start_game_signal()
+	if Input.is_action_just_pressed("right") or GameControl.is_game_running:
 		state_transition.emit(self, "Running")
 	
 	
