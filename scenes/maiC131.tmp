@@ -45,7 +45,7 @@ position = Vector2(-664, -9)
 shape = SubResource("RectangleShape2D_jvos2")
 
 [node name="EnemyOne" parent="Camera2D" instance=ExtResource("5_ynllq")]
-position = Vector2(512, 36)
+position = Vector2(512, 28)
 
 [node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
 

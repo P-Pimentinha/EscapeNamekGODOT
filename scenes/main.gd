@@ -9,6 +9,7 @@ extends Node
 @onready var marker_position_arr: Array = [$Camera2D/Marker2D, $Camera2D/Marker2D2, $Camera2D/Marker2D3, $Camera2D/Marker2D4]
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 
+
 const PLAYER_START_POSITION := Vector2i(104, 528)
 const CAM_START_POS := Vector2i(576, 324)
 
@@ -21,13 +22,16 @@ func _ready():
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.unpause_game.connect(start_game_var)
 
+
 func _physics_process(delta):
 	#update ground position
 	if GameControl.is_game_running:
 		update_camera_position(delta)
 		update_ground_position()
+	pause_game()	
 	player_wins()
 	game_over()
+	
 
 #background and camera func
 func update_camera_position(delta):
@@ -67,12 +71,17 @@ func start_game_var():
 	hud.hide_hud()
 	orb_spawn_timer.start()
 	GameControl.start_game()
-	
-func game_over():
-	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
-		restart_button.show()
-		GameControl.game_over()
+
+
+func pause_game():
+	if Input.is_action_pressed("pause"):
+		GameControl.pause_game()
+		hud.show_hud()
 		get_tree().paused = true
+
+func unpause_game():
+	get_tree().paused = false
+	GameControl.unpause_game()
 	
 func player_wins():
 	if ScoreGlobals.total_current_score >= ScoreGlobals.MAX_SCORE:
@@ -81,7 +90,13 @@ func player_wins():
 		hud.show_victory_label()
 		restart_button.show()
 		get_tree().paused = true
-
+	
+func game_over():
+	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
+		restart_button.show()
+		GameControl.game_over()
+		get_tree().paused = true
+	
 func restart():
 	get_tree().reload_current_scene()
 

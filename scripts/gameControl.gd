@@ -14,6 +14,11 @@ func start_game():
 	is_game_running = true
 	is_player_on_menu = false
 
+func unpause_game():
+	is_game_paused = false
+	is_game_running = true
+	is_player_on_menu = false
+
 func game_over():
 	is_game_paused = true
 	is_game_running = false

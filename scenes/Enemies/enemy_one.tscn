@@ -17,11 +17,14 @@ shape = SubResource("RectangleShape2D_mbw06")
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-49, -37)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1, 18)
 
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-49, 19)
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(-29, -60)
 
-[node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-44, 83)
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(-49, 3)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D"]
+position = Vector2(-28, 67)

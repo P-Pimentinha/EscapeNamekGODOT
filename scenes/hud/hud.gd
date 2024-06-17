@@ -17,7 +17,7 @@ func _ready():
 	keybinding_menu.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	update_score_label()
 	update_progress_bar()
 	menu_controls()
@@ -35,6 +35,11 @@ func hide_hud():
 	keybinding_menu.hide()
 	background_texture.hide()
 
+func show_hud():
+	main_menu.visible = true
+	keybinding_menu.show()
+	background_texture.show()
+
 func show_key_bindings():
 	main_menu.hide()
 	keybinding_menu.show()
@@ -45,7 +50,6 @@ func return_initial_menu():
 
 func menu_controls():
 	if Input.is_action_just_pressed("right"):
-		get_tree().paused = false
 		unpause_game.emit()
 	if GameControl.is_player_on_menu and Input.is_action_just_pressed("Menu_Show_Keys"):
 		show_key_bindings()

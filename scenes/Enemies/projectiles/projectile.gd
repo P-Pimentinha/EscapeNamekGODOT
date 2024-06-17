@@ -1,17 +1,25 @@
 extends Area2D
 
-@export var speed: int = 50
-var direction: Vector2 = Vector2.LEFT
+@export var speed: int = 800
+var direction: Vector2
+
 
 func _ready():
-	pass
-
+	var random_float_value = randf_range(0,0.4)
+	direction = Vector2(-1, random_float_value).normalized()
+	
 func _physics_process(delta):
-	position += direction * speed * delta
-	pass
+	projectile_direction(delta)
 	
-	
+func _on_body_entered(body):
+	if body is PlayerMain:
+		print(body)
+		
 
+func projectile_direction(delta):
+	## Update position
+	position += direction * speed * delta
+	
 #
 #
 #extends Area2D
@@ -41,3 +49,6 @@ func _physics_process(delta):
 #
 #func _on_timer_timeout():
 	#queue_free()
+
+
+
