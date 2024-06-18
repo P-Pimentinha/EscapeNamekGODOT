@@ -5,12 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="2_yro5d"]
 [ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="3_dbe7j"]
 [ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="4_1f7ua"]
+[ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="4_v8p5c"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="5_k3w0o"]
 [ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="5_ynllq"]
 [ext_resource type="PackedScene" uid="uid://bjkesqfcrj4im" path="res://scenes/objectives/OrbOfLight.tscn" id="7_bxjy7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvos2"]
-size = Vector2(20, 650)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1gjvh")
@@ -19,6 +17,8 @@ script = ExtResource("1_1gjvh")
 
 [node name="hud" parent="." instance=ExtResource("4_1f7ua")]
 process_mode = 2
+
+[node name="HudGameplay" parent="." instance=ExtResource("4_v8p5c")]
 
 [node name="Player" parent="." instance=ExtResource("2_yro5d")]
 position = Vector2(104, 528)
@@ -39,10 +39,11 @@ position = Vector2(656, 108)
 position = Vector2(656, 188)
 
 [node name="Area2D" type="Area2D" parent="Camera2D"]
+collision_layer = 4
+collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
-position = Vector2(-664, -9)
-shape = SubResource("RectangleShape2D_jvos2")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/Area2D"]
+polygon = PackedVector2Array(568, -372, -608, -372, -600, 364, 560, 356, 552, 388, -648, 404, -648, -436, 584, -412)
 
 [node name="EnemyOne" parent="Camera2D" instance=ExtResource("5_ynllq")]
 position = Vector2(512, 36)

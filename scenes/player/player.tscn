@@ -106,6 +106,7 @@ size = Vector2(13, 28)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
+collision_mask = 58
 script = ExtResource("1_ivldm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10vcm"]
 
 [node name="projectile" type="Area2D"]
+collision_layer = 16
 script = ExtResource("1_8rhnk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
