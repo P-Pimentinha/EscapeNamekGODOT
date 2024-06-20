@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var score_label = $ScoreLabel
-@onready var start_label = $StartLabel
+#@onready var score_label = $ScoreLabel
+#@onready var start_label = $StartLabel
 @onready var win_label = $WinLabel
 @onready var background_texture = $background_texture
 @onready var main_menu = $main_menu

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcyweb3euj5t3"]
+
+[ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_o2iu3"]
+[ext_resource type="Script" path="res://scenes/Level/level_one.gd" id="2_lweq2"]
+[ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="2_qean3"]
+[ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="2_wubu7"]
+[ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="3_jbkn5"]
+[ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="3_qwflr"]
+[ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="4_0d23u"]
+[ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="4_3x7le"]
+[ext_resource type="AudioStream" uid="uid://cnb8lkwn1gg8g" path="res://assets/sound/thunderstorm.mp3" id="9_lgv8y"]
+
+[node name="LevelOne" instance=ExtResource("1_o2iu3")]
+script = ExtResource("2_lweq2")
+
+[node name="BackGround" parent="." index="0" instance=ExtResource("2_wubu7")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("3_qwflr")]
+position = Vector2(48, 520)
+
+[node name="Ground" parent="." index="2" instance=ExtResource("4_0d23u")]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+position = Vector2(576, 324)
+scale = Vector2(3, 3)
+
+[node name="OrbSpawnMarker" type="Marker2D" parent="Camera2D" index="0"]
+position = Vector2(216, -25.3333)
+
+[node name="OrbSpawnMarker2" type="Marker2D" parent="Camera2D" index="1"]
+position = Vector2(216, 4)
+rotation = -0.134373
+
+[node name="OrbSpawnMarker3" type="Marker2D" parent="Camera2D" index="2"]
+position = Vector2(221.333, 33.3333)
+
+[node name="OrbSpawnMarker4" type="Marker2D" parent="Camera2D" index="3"]
+position = Vector2(218.667, 62.6667)
+
+[node name="despawn_area2D" type="Area2D" parent="Camera2D" index="4"]
+collision_layer = 4
+collision_mask = 24
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/despawn_area2D" index="0"]
+polygon = PackedVector2Array(-202.667, -89.3333, -202.667, 124, 250.667, 124, 250.667, 150.667, -245.333, 142.667, -237.333, -129.333, 221.333, -145.333, 205.333, -116, -205.333, -118.667)
+
+[node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
+process_mode = 2
+
+[node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
+
+[node name="CanvasLayer" parent="Control" index="2" instance=ExtResource("4_3x7le")]
+process_mode = 2
+visible = false
+
+[node name="Orb_Spawn_TImer" type="Timer" parent="Timers" index="0"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audios" index="0"]
+stream = ExtResource("9_lgv8y")
+autoplay = true
+
+[connection signal="area_entered" from="Camera2D/despawn_area2D" to="." method="_on_despawn_area_2d_area_entered"]
+[connection signal="timeout" from="Timers/Orb_Spawn_TImer" to="." method="_on_orb_spawn_t_imer_timeout"]
