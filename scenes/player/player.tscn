@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3 uid="uid://b37fx1mhr2f28"]
 
-[ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/myImg/Player/idle.png" id="1_88k04"]
+[ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/art/Player/idle.png" id="1_88k04"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ivldm"]
-[ext_resource type="Texture2D" uid="uid://us7j4k6to4w3" path="res://assets/myImg/Player/Sprite-0001.png" id="2_oub2a"]
-[ext_resource type="Texture2D" uid="uid://c6j2hrvvmj73t" path="res://assets/myImg/Player/jump.png" id="3_jpw1t"]
+[ext_resource type="Texture2D" uid="uid://us7j4k6to4w3" path="res://assets/art/Player/Sprite-0001.png" id="2_oub2a"]
+[ext_resource type="Texture2D" uid="uid://c6j2hrvvmj73t" path="res://assets/art/Player/jump.png" id="3_jpw1t"]
 [ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="4_1771s"]
 [ext_resource type="Script" path="res://scenes/player/Idle.gd" id="5_dh1ve"]
 [ext_resource type="Script" path="res://scenes/player/Running.gd" id="6_ucy2e"]

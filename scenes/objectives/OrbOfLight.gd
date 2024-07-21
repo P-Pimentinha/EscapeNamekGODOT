@@ -2,9 +2,9 @@ extends Area2D
 
 @onready var sprite_2d = $Sprite2D
 
-const ORB_32_RED = preload("res://assets/myImg/objectives/orb32Red.png")
-const ORB_32_YELLOW = preload("res://assets/myImg/objectives/orb32Yellow.png")
-const ORB_32_BLUE = preload("res://assets/myImg/objectives/orb32yblue.png")
+const ORB_32_RED = preload("res://assets/art/objectives/orbs/orb32Red.png")
+const ORB_32_YELLOW = preload("res://assets/art/objectives/orbs/orb32Yellow.png")
+const ORB_32_BLUE = preload("res://assets/art/objectives/orbs/orb32yblue.png")
 
 var array_of_possible_orbs : Array = [
 	{"texture": ORB_32_BLUE, "value_to_add": 2},

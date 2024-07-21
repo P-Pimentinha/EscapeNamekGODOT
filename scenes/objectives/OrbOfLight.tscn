@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjkesqfcrj4im"]
 
 [ext_resource type="Script" path="res://scenes/objectives/OrbOfLight.gd" id="1_cvp8t"]
-[ext_resource type="Texture2D" uid="uid://ch70t5ulxg4ks" path="res://assets/myImg/objectives/orb32.png" id="2_lo1s8"]
+[ext_resource type="Texture2D" uid="uid://ch70t5ulxg4ks" path="res://assets/art/objectives/orbs/orb32.png" id="2_lo1s8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_18vxh"]
 radius = 16.0

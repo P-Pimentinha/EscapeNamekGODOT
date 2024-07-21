@@ -1,36 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu6xe5rlnnmx"]
+[gd_scene load_steps=14 format=3 uid="uid://cu6xe5rlnnmx"]
 
-[ext_resource type="Texture2D" uid="uid://b4rb7xpxievfm" path="res://assets/myImg/background/dark/background1dark.png" id="1_hs08d"]
 [ext_resource type="Script" path="res://scenes/scenario/background.gd" id="1_ne1bc"]
-[ext_resource type="Texture2D" uid="uid://g6j0bibho0nc" path="res://assets/myImg/background/dark/background2dark.png" id="2_2eqvq"]
-[ext_resource type="Texture2D" uid="uid://cxuuxlnhvjm25" path="res://assets/myImg/background/dark/background3dark.png" id="3_v4nn1"]
-[ext_resource type="Texture2D" uid="uid://cjfatsb07arei" path="res://assets/myImg/background/dark/background4dark.png" id="4_dhpuq"]
-[ext_resource type="Texture2D" uid="uid://dtil1ajmjpfqc" path="res://assets/myImg/background/dark/background5dark.png" id="5_bocjl"]
-[ext_resource type="Texture2D" uid="uid://d1wbxx6lfd3sd" path="res://assets/myImg/background/dark/thunderstorm/clouds/bg_clouds1.png" id="5_h2fts"]
-[ext_resource type="Texture2D" uid="uid://cmoxcneu5nucc" path="res://assets/myImg/background/dark/background6dark.png" id="6_8pqha"]
-[ext_resource type="Texture2D" uid="uid://uy3kidc0d8ee" path="res://assets/myImg/background/dark/thunderstorm/clouds/bg_clouds2.png" id="6_cuums"]
-[ext_resource type="Texture2D" uid="uid://bnmqkqa38jwud" path="res://assets/myImg/background/dark/thunderstorm/clouds/bg_clouds3.png" id="7_wrw8o"]
+[ext_resource type="Texture2D" uid="uid://b4rb7xpxievfm" path="res://assets/art/background/dark/background1dark.png" id="2_h1pke"]
+[ext_resource type="Texture2D" uid="uid://g6j0bibho0nc" path="res://assets/art/background/dark/background2dark.png" id="3_gyn0q"]
+[ext_resource type="Texture2D" uid="uid://cxuuxlnhvjm25" path="res://assets/art/background/dark/background3dark.png" id="4_l0y5b"]
+[ext_resource type="Texture2D" uid="uid://d1wbxx6lfd3sd" path="res://assets/art/background/dark/thunderstorm/clouds/bg_clouds1.png" id="5_rnsjf"]
+[ext_resource type="Texture2D" uid="uid://uy3kidc0d8ee" path="res://assets/art/background/dark/thunderstorm/clouds/bg_clouds2.png" id="6_no3ol"]
+[ext_resource type="Texture2D" uid="uid://bnmqkqa38jwud" path="res://assets/art/background/dark/thunderstorm/clouds/bg_clouds3.png" id="7_hrx8y"]
+[ext_resource type="Texture2D" uid="uid://cjfatsb07arei" path="res://assets/art/background/dark/background4dark.png" id="8_oxecp"]
+[ext_resource type="Texture2D" uid="uid://dtil1ajmjpfqc" path="res://assets/art/background/dark/background5dark.png" id="9_3wu3x"]
+[ext_resource type="Texture2D" uid="uid://cmoxcneu5nucc" path="res://assets/art/background/dark/background6dark.png" id="10_5krtc"]
 [ext_resource type="AudioStream" uid="uid://rpw8pxeqbldv" path="res://assets/sound/thunder.mp3" id="11_jx8gn"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uoaxe"]
-atlas = ExtResource("3_v4nn1")
-region = Rect2(0, 0, 2304, 648)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7fdl"]
-atlas = ExtResource("5_h2fts")
+atlas = ExtResource("5_rnsjf")
 region = Rect2(0, 0, 2304, 648)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kb30s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uoaxe")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_p7fdl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_v4nn1")
+"texture": ExtResource("4_l0y5b")
 }],
 "loop": false,
 "name": &"last_cloud",
@@ -38,38 +31,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_v4nn1")
+"texture": ExtResource("6_no3ol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_cuums")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_v4nn1")
+"texture": ExtResource("4_l0y5b")
 }],
 "loop": false,
 "name": &"mid_cloud",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l0y5b")
+}],
+"loop": false,
+"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_v4nn1")
+"texture": ExtResource("7_hrx8y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_wrw8o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_v4nn1")
+"texture": ExtResource("4_l0y5b")
 }],
 "loop": false,
 "name": &"top_cloud",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="BackGround" type="ParallaxBackground"]
 script = ExtResource("1_ne1bc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hs08d")
+texture = ExtResource("2_h1pke")
 centered = false
 
 [node name="Planets" type="ParallaxLayer" parent="."]
@@ -77,7 +72,7 @@ motion_scale = Vector2(0.1, 1)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Planets"]
-texture = ExtResource("2_2eqvq")
+texture = ExtResource("3_gyn0q")
 centered = false
 
 [node name="Clouds" type="ParallaxLayer" parent="."]
@@ -86,7 +81,8 @@ motion_mirroring = Vector2(2304, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Clouds"]
 sprite_frames = SubResource("SpriteFrames_kb30s")
-animation = &"top_cloud"
+animation = &"new_animation"
+autoplay = "new_animation"
 centered = false
 
 [node name="Water" type="ParallaxLayer" parent="."]
@@ -94,7 +90,7 @@ motion_scale = Vector2(0.3, 1)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Water"]
-texture = ExtResource("4_dhpuq")
+texture = ExtResource("8_oxecp")
 centered = false
 
 [node name="Islands" type="ParallaxLayer" parent="."]
@@ -102,7 +98,7 @@ motion_scale = Vector2(0.25, 1)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Islands"]
-texture = ExtResource("5_bocjl")
+texture = ExtResource("9_3wu3x")
 centered = false
 
 [node name="Floor" type="ParallaxLayer" parent="."]
@@ -110,7 +106,7 @@ motion_scale = Vector2(0.5, 1)
 motion_mirroring = Vector2(2304, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
-texture = ExtResource("6_8pqha")
+texture = ExtResource("10_5krtc")
 centered = false
 
 [node name="Audios" type="Node2D" parent="."]

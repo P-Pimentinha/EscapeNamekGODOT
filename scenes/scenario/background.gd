@@ -7,9 +7,9 @@ extends ParallaxBackground
 
 @onready var storm_timer = $storm_timer
 @onready var audion_thunder = $Audios/audion_thunder
+const arr_thunderstorm_animations = ["last_cloud", "mid_cloud", "top_cloud"]
 
-
-var last_played_animation: int = 1
+#var last_played_animation: int = 1
 
 #var storm_textures: Array = [
 	#{"texture": BG_CLOUDS_THUNDER_1, "audio" : "hello"},
@@ -26,28 +26,9 @@ func _ready():
 		#audion_thunder.play()
 
 func _on_storm_timer_timeout():
-	
 	audion_thunder.play()
-	if last_played_animation == 1:
-		thunder_one_animation()
-	elif last_played_animation == 2:
-		thunder_two_animation()
-	else:
-		thunder_three_animation()
-	
-	last_played_animation = randi_range(1,3)	
+	var random_thunderstorm_animation= randi_range(0,2)	
+	$Clouds/AnimatedSprite2D.play(arr_thunderstorm_animations[random_thunderstorm_animation])
 	storm_timer.wait_time = randf_range(1.5,2.4)
 	storm_timer.start()
 	
-
-func thunder_one_animation():
-	
-	$Clouds/AnimatedSprite2D.play("last_cloud")
-
-func thunder_two_animation():
-
-	$Clouds/AnimatedSprite2D.play("mid_cloud")
-
-func thunder_three_animation():
-	
-	$Clouds/AnimatedSprite2D.play("top_cloud")
