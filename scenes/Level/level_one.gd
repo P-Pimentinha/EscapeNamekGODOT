@@ -6,7 +6,7 @@ extends MainRootScene
 @onready var hud = $Control/hud
 @onready var restart_button = $Control/CanvasLayer
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
-@onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker,$Camera2D/OrbSpawnMarker2,$Camera2D/OrbSpawnMarker3,$Camera2D/OrbSpawnMarker4]
+@onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 
 const PLAYER_START_POSITION := Vector2i(104, 528)
@@ -15,18 +15,18 @@ const CAM_START_POS := Vector2i(576, 324)
 var screen_size: Vector2i
  
 func _ready():
+	super()
 	screen_size = get_window().size
 	new_game()
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.unpause_game.connect(start_game_var)
-
 
 func _physics_process(delta):
 	#update ground position
 	if GameControl.is_game_running:
 		update_camera_position(delta)
 		update_ground_position()
-	pause_game()	
+	pause_game()
 	player_wins()
 	game_over()
 
@@ -69,7 +69,6 @@ func start_game_var():
 	orb_spawn_timer.start()
 	GameControl.start_game()
 
-
 func pause_game():
 	if Input.is_action_pressed("pause"):
 		GameControl.pause_game()
@@ -96,8 +95,3 @@ func game_over():
 	
 func restart():
 	get_tree().reload_current_scene()
-
-
-
-
-

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtp0e7r8t2777"]
+[gd_scene load_steps=9 format=3 uid="uid://dtp0e7r8t2777"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_1gjvh"]
 [ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="1_unf7o"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="4_v8p5c"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="5_k3w0o"]
 [ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="5_ynllq"]
-[ext_resource type="AudioStream" uid="uid://cnb8lkwn1gg8g" path="res://assets/sound/thunderstorm.mp3" id="10_wpvt3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1gjvh")
@@ -48,6 +47,12 @@ polygon = PackedVector2Array(568, -372, -608, -372, -600, 364, 560, 356, 552, 38
 [node name="EnemyOne" parent="Camera2D" instance=ExtResource("5_ynllq")]
 position = Vector2(512, 36)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Ground" parent="." instance=ExtResource("3_dbe7j")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_k3w0o")]
@@ -59,9 +64,7 @@ wait_time = 2.0
 
 [node name="Audios" type="Node2D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audios"]
-stream = ExtResource("10_wpvt3")
-autoplay = true
+[node name="Yello" type="Node" parent="."]
 
 [connection signal="area_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Orb_Spawn_Timer" to="." method="_on_orb_spawn_timer_timeout"]
