@@ -1,5 +1,8 @@
 extends MainRootScene
 
+@onready var music_1: AudioStreamPlayer = $Audios/music1
+@onready var music_2: AudioStreamPlayer = $Audios/music2
+@onready var music_3 = $Audios/music3
 @onready var player = $Player
 @onready var camera_2d = $Camera2D
 @onready var ground = $Ground
@@ -7,7 +10,9 @@ extends MainRootScene
 @onready var restart_button = $Control/CanvasLayer
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
+@export var level_resources: CustomLevelOneResource
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
+var last_spawned_orb
 
 const PLAYER_START_POSITION := Vector2i(104, 528)
 const CAM_START_POS := Vector2i(576, 324)
@@ -29,6 +34,30 @@ func _physics_process(delta):
 	pause_game()
 	player_wins()
 	game_over()
+	change_background_music()
+
+#orb logic
+func spawn_orbs():
+	var random_index = randi() % marker_position_arr.size()
+	var random_value = marker_position_arr[random_index] as Marker2D
+	var orb = orb_scene.instantiate() as Area2D
+	orb.position = random_value.global_position
+	#last_spawned_orb = orb.selected_orb.texture
+	add_child(orb)
+	
+	
+
+func _on_orb_spawn_t_imer_timeout():
+	spawn_orbs()
+
+#sound effects
+func change_background_music():
+	if ScoreGlobals.total_current_score > 20 and  music_1.playing:
+		music_1.stop()
+		music_2.play()
+	if ScoreGlobals.total_current_score > 40 and  music_2.playing:	
+		music_2.stop()
+		music_3.play()
 
 #background and camera func
 func update_camera_position(delta):
@@ -40,17 +69,6 @@ func _on_despawn_area_2d_area_entered(area):
 func update_ground_position():
 	if camera_2d.position.x - ground.position.x > screen_size.x * 1.5:
 		ground.position.x += screen_size.x
-
-#orb logic
-func spawn_orbs():
-	var random_index = randi() % marker_position_arr.size()
-	var random_value = marker_position_arr[random_index] as Marker2D
-	var orb = orb_scene.instantiate() as Area2D
-	orb.position = random_value.global_position
-	add_child(orb)
-
-func _on_orb_spawn_t_imer_timeout():
-	spawn_orbs()
 
 #game state
 func new_game():

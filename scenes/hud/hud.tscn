@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://lpgbh3a740ln"]
+[gd_scene load_steps=4 format=3 uid="uid://lpgbh3a740ln"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_d37rk"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="1_jan38"]
-[ext_resource type="Texture2D" uid="uid://bsa5bj8c7eyhn" path="res://assets/art/objectives/orbs/orb32Yellow.png" id="3_0dm48"]
 [ext_resource type="Texture2D" uid="uid://dy8vvnse0lrvv" path="res://assets/art/HUD/Color_Rect.png" id="3_3h4pa"]
-[ext_resource type="Texture2D" uid="uid://c2wuvqga734qd" path="res://assets/art/objectives/orbs/orb32Red.png" id="3_l3bxl"]
-[ext_resource type="Texture2D" uid="uid://cy83ugo5grj7g" path="res://assets/art/objectives/orbs/orb32yblue.png" id="3_tcg4r"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_d37rk")
@@ -128,18 +125,6 @@ text = "
 \"K\" TO CHECK THE KEYS"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="main_menu"]
-position = Vector2(86.5, 74.5)
-texture = ExtResource("3_0dm48")
-
-[node name="Sprite2D2" type="Sprite2D" parent="main_menu"]
-position = Vector2(86.5, 26.5)
-texture = ExtResource("3_tcg4r")
-
-[node name="Sprite2D3" type="Sprite2D" parent="main_menu"]
-position = Vector2(86.5, 130.5)
-texture = ExtResource("3_l3bxl")
 
 [node name="keybinding_menu" type="VBoxContainer" parent="."]
 visible = false

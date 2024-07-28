@@ -113,7 +113,7 @@ centered = false
 
 [node name="audion_thunder" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("11_jx8gn")
-volume_db = -12.234
+volume_db = -15.0
 
 [node name="storm_timer" type="Timer" parent="."]
 one_shot = true

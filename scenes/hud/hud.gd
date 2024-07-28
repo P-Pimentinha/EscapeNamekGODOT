@@ -11,7 +11,8 @@ signal unpause_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	keybinding_menu.hide()
+	# keybinding_menu.hide()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -29,7 +30,7 @@ func hide_hud():
 
 func show_hud():
 	main_menu.visible = true
-	keybinding_menu.show()
+	#keybinding_menu.show()
 	background_texture.show()
 
 func show_key_bindings():
