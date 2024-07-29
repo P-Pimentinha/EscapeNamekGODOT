@@ -14,3 +14,6 @@ offset_bottom = 40.0
 [node name="Timers" type="Node2D" parent="."]
 
 [node name="Audios" type="Node2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+unique_name_in_owner = true

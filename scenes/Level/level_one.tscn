@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcyweb3euj5t3"]
+[gd_scene load_steps=14 format=3 uid="uid://dcyweb3euj5t3"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_o2iu3"]
 [ext_resource type="Script" path="res://scenes/Level/level_one.gd" id="2_lweq2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="3_qwflr"]
 [ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="4_0d23u"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="4_3x7le"]
+[ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="7_xmely"]
 [ext_resource type="AudioStream" uid="uid://lv0nwr2wepru" path="res://assets/sound/soundtrack/escape_namek_sample_first.ogg" id="9_rlais"]
 [ext_resource type="AudioStream" uid="uid://ch7pyr6qgtw0g" path="res://assets/sound/soundtrack/escape_namek_sample_second.ogg" id="10_lpmh3"]
 [ext_resource type="AudioStream" uid="uid://hppngw6xx548" path="res://assets/sound/soundtrack/escape_namek_sample_third.ogg" id="11_ilsvu"]
@@ -41,7 +42,15 @@ position = Vector2(221.333, 33.3333)
 [node name="OrbSpawnMarker4" type="Marker2D" parent="Camera2D" index="3"]
 position = Vector2(218.667, 62.6667)
 
-[node name="despawn_area2D" type="Area2D" parent="Camera2D" index="4"]
+[node name="FloorBurningPosition" type="Marker2D" parent="Camera2D" index="4"]
+position = Vector2(126.333, 81.6667)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="EnemyOne" parent="Camera2D" index="5" instance=ExtResource("7_xmely")]
+position = Vector2(144.333, 25)
+scale = Vector2(0.666667, 0.666667)
+
+[node name="despawn_area2D" type="Area2D" parent="Camera2D" index="6"]
 collision_layer = 4
 collision_mask = 24
 
@@ -50,6 +59,7 @@ polygon = PackedVector2Array(-202.667, -89.3333, -202.667, 124, 250.667, 124, 25
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
+visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
 

@@ -1,5 +1,7 @@
 extends MainRootScene
 
+@export var level_resources: CustomLevelOneResource
+
 @onready var music_1: AudioStreamPlayer = $Audios/music1
 @onready var music_2: AudioStreamPlayer = $Audios/music2
 @onready var music_3 = $Audios/music3
@@ -10,7 +12,7 @@ extends MainRootScene
 @onready var restart_button = $Control/CanvasLayer
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
-@export var level_resources: CustomLevelOneResource
+
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 var last_spawned_orb
 

@@ -14,7 +14,7 @@ offset_bottom = 32.0
 color = Color(1, 0.207843, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 9)
+position = Vector2(16, 15)
 shape = SubResource("CapsuleShape2D_10vcm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
