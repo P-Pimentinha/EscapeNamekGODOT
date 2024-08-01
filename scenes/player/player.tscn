@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b37fx1mhr2f28"]
+[gd_scene load_steps=25 format=3 uid="uid://b37fx1mhr2f28"]
 
 [ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/art/Player/idle.png" id="1_88k04"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ivldm"]
@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://c6j2hrvvmj73t" path="res://assets/art/Player/jump.png" id="3_jpw1t"]
 [ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="4_1771s"]
 [ext_resource type="Script" path="res://scenes/player/Idle.gd" id="5_dh1ve"]
+[ext_resource type="Texture2D" uid="uid://fcbfi2df07wa" path="res://assets/art/Player/Trunks_slide.png" id="5_q4uip"]
 [ext_resource type="Script" path="res://scenes/player/Running.gd" id="6_ucy2e"]
 [ext_resource type="Script" path="res://scenes/player/Jumping.gd" id="7_2w1e6"]
 [ext_resource type="Script" path="res://scenes/player/Falling.gd" id="8_hkjik"]
+[ext_resource type="Script" path="res://scenes/player/Slide.gd" id="11_41wi2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfxeg"]
 atlas = ExtResource("1_88k04")
@@ -96,6 +98,14 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_q4uip")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65afd"]
@@ -111,17 +121,19 @@ script = ExtResource("1_ivldm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5jiql")
-animation = &"idle"
+animation = &"slide"
 autoplay = "idle"
 
 [node name="Run" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-4, 3.5)
 shape = SubResource("RectangleShape2D_65afd")
+disabled = true
 
 [node name="Idle" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_j8t1x")
+disabled = true
 debug_color = Color(0.733333, 0.4, 0.658824, 0.419608)
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -139,3 +151,6 @@ script = ExtResource("7_2w1e6")
 
 [node name="Falling" type="Node" parent="FSM"]
 script = ExtResource("8_hkjik")
+
+[node name="Slide" type="Node" parent="FSM"]
+script = ExtResource("11_41wi2")

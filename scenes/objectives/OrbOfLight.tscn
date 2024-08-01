@@ -1,19 +1,95 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjkesqfcrj4im"]
+[gd_scene load_steps=15 format=3 uid="uid://bjkesqfcrj4im"]
 
 [ext_resource type="Script" path="res://scenes/objectives/orb_of_light.gd" id="1_f5nc8"]
 [ext_resource type="Texture2D" uid="uid://bxgx527axbdww" path="res://assets/art/objectives/orbs/orb_light_red.png" id="2_fv863"]
+[ext_resource type="Texture2D" uid="uid://bqaovs71k668j" path="res://assets/art/objectives/orbs/orb_black_3.2_64.png" id="3_mxdbi"]
+[ext_resource type="Texture2D" uid="uid://da5fpp2rovocd" path="res://assets/art/objectives/orbs/orb_3.2_64.png" id="3_w4imo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_18vxh"]
 radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60d1c"]
+atlas = ExtResource("3_mxdbi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yk8t"]
+atlas = ExtResource("3_mxdbi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ef1"]
+atlas = ExtResource("3_mxdbi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57hoe"]
+atlas = ExtResource("3_mxdbi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yat2k"]
+atlas = ExtResource("3_w4imo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jfso"]
+atlas = ExtResource("3_w4imo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t87l6"]
+atlas = ExtResource("3_w4imo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or8cv"]
+atlas = ExtResource("3_w4imo")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijwir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60d1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yk8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ef1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57hoe")
+}],
+"loop": true,
+"name": &"black",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yat2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jfso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t87l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or8cv")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 4.0
+}]
 
 [node name="OrbOfLight" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_f5nc8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_fv863")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_18vxh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ijwir")
+animation = &"black"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

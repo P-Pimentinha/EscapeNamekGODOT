@@ -3,10 +3,12 @@ extends State
 
 @onready var player: PlayerMain = $"../.."
 @onready var animated_sprite_2d = $"../../AnimatedSprite2D"
+@onready var run_colision_shape = $"../../Run"
 
 func Enter():
-	print("Running")
 	animated_sprite_2d.play("run")
+	run_colision_shape.disabled = false
+	run_colision_shape.visible = true
 	
 
 #func Update(_delta : float):
@@ -15,8 +17,8 @@ func Enter():
 		
 
 func Physics_Update(_delta : float):
-	if Input.is_action_just_pressed("ui_accept"):
-		state_transition.emit(self, "Jumping")
+	trans_jump()
+	trans_slide()
 	player.move()
 	
 	
@@ -24,6 +26,14 @@ func Physics_Update(_delta : float):
 	
 func Exit():
 	pass
+
+func trans_jump():
+	if Input.is_action_just_pressed("jump"):
+		state_transition.emit(self, "Jumping")
+
+func trans_slide():
+	if Input.is_action_just_pressed("slide"):
+		state_transition.emit(self, "Slide")
 
 #func transition_to_walk():
 	#if(Input.get_vector("Left", "Right", "Up", "Down").normalized()):

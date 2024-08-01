@@ -5,7 +5,6 @@ extends State
 @onready var animated_sprite_2d = $"../../AnimatedSprite2D"
 
 func Enter():
-	print("Jumping")
 	animated_sprite_2d.play("jump")
 	player.velocity.y = player.JUMP_SPEED
 	

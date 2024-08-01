@@ -3,11 +3,13 @@ extends State
 
 @onready var player: PlayerMain = $"../.."
 @onready var animated_sprite_2d = $"../../AnimatedSprite2D"
+@onready var idle_colision_shape: CollisionShape2D = $"../../Idle"
 
 
 func Enter():
-	print("Idle")
 	animated_sprite_2d.play("idle")
+	idle_colision_shape.disabled = false
+	idle_colision_shape.visible = true
 	
 
 #func Update(_delta : float):
@@ -24,7 +26,8 @@ func Physics_Update(_delta : float):
 		
 	
 func Exit():
-	pass
+	idle_colision_shape.disabled = true
+	idle_colision_shape.visible = false
 
 #func transition_to_walk():
 	#if(Input.get_vector("Left", "Right", "Up", "Down").normalized()):

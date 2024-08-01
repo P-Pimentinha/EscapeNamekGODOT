@@ -2,7 +2,10 @@ extends CharacterBody2D
 class_name PlayerMain
 
 @onready var fsm = $FSM as FiniteStateMachine
-@onready var animated_sprite_2d = $AnimatedSprite2D
+#@onready var animated_sprite_2d = $AnimatedSprite2D
+#@onready var run_colision_shape = $Run
+#@onready var idle_colision_shape = $Idle
+
 
 #jump
 const GRAVITY : int = 4200
@@ -14,6 +17,8 @@ const STOP_SPEED: float = 0
 const START_SPEED : float = 400.0
 const MAX_SPEED : float = 550
 var speed: float = START_SPEED
+
+	
 
 func move():
 	velocity.x = START_SPEED
