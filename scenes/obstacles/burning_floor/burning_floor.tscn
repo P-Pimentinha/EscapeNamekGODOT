@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8nth6gkihn0m"]
 
-[ext_resource type="Texture2D" uid="uid://bwkuncp7hsg3v" path="res://assets/art/obstacles/burning_floor/burning floor.png" id="1_84p5l"]
 [ext_resource type="Script" path="res://scenes/obstacles/burning_floor/burning_floor.gd" id="1_ge0w8"]
+[ext_resource type="Texture2D" uid="uid://4nyyv7ji5nyl" path="res://assets/art/obstacles/burning_floor/burning_floor_2.png" id="2_03kqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrhi2"]
 size = Vector2(32, 16)
 
 [node name="BurningFloor" type="Area2D"]
-collision_layer = 64
+collision_layer = 80
 script = ExtResource("1_ge0w8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qrhi2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_84p5l")
+texture = ExtResource("2_03kqp")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

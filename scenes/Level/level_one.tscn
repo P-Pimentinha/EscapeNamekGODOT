@@ -59,7 +59,6 @@ polygon = PackedVector2Array(-202.667, -89.3333, -202.667, 124, 250.667, 124, 25
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
-visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
 

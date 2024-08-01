@@ -12,4 +12,4 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print(body)
+	ScoreGlobals.add_current_score(-5)

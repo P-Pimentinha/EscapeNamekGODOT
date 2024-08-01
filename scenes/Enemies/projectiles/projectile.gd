@@ -1,12 +1,17 @@
 extends Area2D
 
-@export var speed: int = 800
+@export var speed: int = 500
+@onready var sprite_2d = $Sprite2D
 var direction: Vector2
-
+var can_move = false
+var X_DIRECTION: int = -1
 
 func _ready():
-	var random_float_value = randf_range(0,0.4)
-	direction = Vector2(-1, random_float_value).normalized()
+	var random_y_direction = randf_range(0.1,0.3)
+	direction = Vector2(X_DIRECTION, random_y_direction).normalized()
+	projectile_animation()
+	
+	
 	
 func _physics_process(delta):
 	projectile_direction(delta)
@@ -17,9 +22,14 @@ func _on_body_entered(body):
 		
 
 func projectile_direction(delta):
-	## Update position
-	position += direction * speed * delta
+	if can_move:
+		position += direction * speed * delta
 	
+func projectile_animation():
+	var tween= create_tween()
+	tween.tween_property(sprite_2d, "scale", Vector2(3,3), 1)
+	await tween.finished
+	can_move = true
 #
 #
 #extends Area2D

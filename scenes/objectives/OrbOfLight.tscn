@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjkesqfcrj4im"]
 
-[ext_resource type="Script" path="res://scenes/objectives/OrbOfLight.gd" id="1_cvp8t"]
+[ext_resource type="Script" path="res://scenes/objectives/orb_of_light.gd" id="1_f5nc8"]
 [ext_resource type="Texture2D" uid="uid://bxgx527axbdww" path="res://assets/art/objectives/orbs/orb_light_red.png" id="2_fv863"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_18vxh"]
@@ -8,7 +8,7 @@ radius = 16.0
 
 [node name="OrbOfLight" type="Area2D"]
 collision_layer = 8
-script = ExtResource("1_cvp8t")
+script = ExtResource("1_f5nc8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_fv863")

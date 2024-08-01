@@ -25,12 +25,6 @@ texture = ExtResource("3_as42y")
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_mbw06")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 9.5
-offset_top = -33.0
-offset_right = 14.5
-offset_bottom = -28.0
-
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(12, -31)
 
@@ -44,6 +38,10 @@ position = Vector2(-11, 54)
 position = Vector2(1, 18)
 
 [node name="FireTimer" type="Timer" parent="."]
-one_shot = true
+wait_time = 5.0
+
+[node name="ProjectileTimer" type="Timer" parent="."]
+wait_time = 15.0
 
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]

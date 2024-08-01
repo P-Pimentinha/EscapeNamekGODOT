@@ -22,7 +22,6 @@ var selected_orb
 
 func _ready():
 	var get_last_used_orb = get_parent().level_resources.last_selected_orb
-	#print(x)
 	var random_index = randi() % array_of_possible_orbs.size()
 	selected_orb = array_of_possible_orbs[random_index]
 	while selected_orb == get_last_used_orb:
