@@ -68,3 +68,4 @@ func stop():
 		##animated_sprite_2d.play("jump")
 		#
 	#move_and_slide()
+

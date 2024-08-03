@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b37fx1mhr2f28"]
+[gd_scene load_steps=26 format=3 uid="uid://b37fx1mhr2f28"]
 
 [ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/art/Player/idle.png" id="1_88k04"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ivldm"]
@@ -114,6 +114,9 @@ size = Vector2(20, 23)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8t1x"]
 size = Vector2(13, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kup5q"]
+size = Vector2(21, 13)
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 collision_mask = 58
@@ -136,6 +139,11 @@ shape = SubResource("RectangleShape2D_j8t1x")
 disabled = true
 debug_color = Color(0.733333, 0.4, 0.658824, 0.419608)
 
+[node name="Slide" type="CollisionShape2D" parent="."]
+position = Vector2(-0.166667, 1.16667)
+shape = SubResource("RectangleShape2D_kup5q")
+disabled = true
+
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1771s")
 initial_state = NodePath("Idle")
@@ -154,3 +162,10 @@ script = ExtResource("8_hkjik")
 
 [node name="Slide" type="Node" parent="FSM"]
 script = ExtResource("11_41wi2")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SlideTimer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="timeout" from="Timers/SlideTimer" to="FSM/Slide" method="_on_slide_timer_timeout"]

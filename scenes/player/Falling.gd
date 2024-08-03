@@ -3,9 +3,10 @@ extends State
 
 @onready var player: PlayerMain = $"../.."
 @onready var animated_sprite_2d = $"../../AnimatedSprite2D"
+@onready var run = $"../../Run"
 
 func Enter():
-	print("Falling")
+	run.disabled = false
 	animated_sprite_2d.play("jump")
 	
 

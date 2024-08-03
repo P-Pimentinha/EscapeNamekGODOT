@@ -25,7 +25,7 @@ func Physics_Update(_delta : float):
 		
 	
 func Exit():
-	pass
+	run_colision_shape.disabled = true
 
 func trans_jump():
 	if Input.is_action_just_pressed("jump"):
