@@ -10,7 +10,6 @@ var current_state : State
 	# everything that uses a state machine!
 
 func _ready():
-	
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child

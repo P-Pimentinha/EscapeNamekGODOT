@@ -2,7 +2,7 @@ extends Node
 
 var is_game_running: bool = false
 var is_game_paused: bool = false
-var is_player_on_menu: bool = true
+var is_player_on_menu: bool = false
 
 func restart_game_state():
 	is_game_paused = false

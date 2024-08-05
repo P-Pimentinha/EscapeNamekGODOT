@@ -6,6 +6,8 @@ var direction: Vector2
 var can_move = false
 var X_DIRECTION: int = -1
 
+signal animation_finished
+
 func _ready():
 	var random_y_direction = randf_range(0.1,0.3)
 	direction = Vector2(X_DIRECTION, random_y_direction).normalized()
@@ -29,6 +31,7 @@ func projectile_animation():
 	var tween= create_tween()
 	tween.tween_property(sprite_2d, "scale", Vector2(3,3), 1)
 	await tween.finished
+	animation_finished.emit()
 	can_move = true
 #
 #

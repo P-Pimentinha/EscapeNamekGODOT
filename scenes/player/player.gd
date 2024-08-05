@@ -18,8 +18,6 @@ const START_SPEED : float = 400.0
 const MAX_SPEED : float = 550
 var speed: float = START_SPEED
 
-	
-
 func move():
 	velocity.x = START_SPEED
 	move_and_slide()

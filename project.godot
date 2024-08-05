@@ -17,11 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ScoreGlobals="*res://scripts/score/score_globals.gd"
-GameControl="*res://scripts/gameControl.gd"
+ScoreGlobals="*res://scripts/globals/score_globals.gd"
+GameControl="*res://scripts/globals/gameControl.gd"
 
 [display]
 
+window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 

@@ -22,7 +22,6 @@ const CAM_START_POS := Vector2i(576, 324)
 var screen_size: Vector2i
  
 func _ready():
-	
 	super()
 	screen_size = get_window().size
 	new_game()
