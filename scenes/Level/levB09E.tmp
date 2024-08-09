@@ -21,7 +21,7 @@ level_resources = ExtResource("3_hma6g")
 [node name="BackGround" parent="." index="0" instance=ExtResource("2_wubu7")]
 
 [node name="Player" parent="." index="1" instance=ExtResource("3_qwflr")]
-position = Vector2(73, 524)
+position = Vector2(48, 520)
 
 [node name="Ground" parent="." index="2" instance=ExtResource("4_0d23u")]
 
@@ -57,12 +57,6 @@ collision_mask = 24
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/despawn_area2D" index="0"]
 polygon = PackedVector2Array(-202.667, -89.3333, -202.667, 124, 250.667, 124, 250.667, 150.667, -245.333, 142.667, -237.333, -129.333, 221.333, -145.333, 205.333, -116, -205.333, -118.667)
 
-[node name="player_speed_killswitch" type="Area2D" parent="Camera2D" index="7"]
-collision_layer = 32
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/player_speed_killswitch" index="0"]
-polygon = PackedVector2Array(-182.333, -108.333, -191.333, -108.333, -191.333, 108, -183.667, 109.667)
-
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
 
@@ -85,6 +79,4 @@ stream = ExtResource("10_lpmh3")
 stream = ExtResource("11_ilsvu")
 
 [connection signal="area_entered" from="Camera2D/despawn_area2D" to="." method="_on_despawn_area_2d_area_entered"]
-[connection signal="body_entered" from="Camera2D/player_speed_killswitch" to="." method="_on_player_speed_killswitch_body_entered"]
-[connection signal="body_exited" from="Camera2D/player_speed_killswitch" to="." method="_on_player_speed_killswitch_body_exited"]
 [connection signal="timeout" from="Timers/Orb_Spawn_TImer" to="." method="_on_orb_spawn_t_imer_timeout"]

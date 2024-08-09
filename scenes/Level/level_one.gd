@@ -16,8 +16,9 @@ extends MainRootScene
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 var last_spawned_orb
 
-const PLAYER_START_POSITION := Vector2i(104, 528)
+const PLAYER_START_POSITION := Vector2i(100, 528)
 const CAM_START_POS := Vector2i(576, 324)
+const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
 
 var screen_size: Vector2i
  
@@ -40,13 +41,13 @@ func _physics_process(delta):
 
 #orb logic
 func spawn_orbs():
-	var random_index = randi() % marker_position_arr.size()
-	var random_value = marker_position_arr[random_index] as Marker2D
-	var orb = orb_scene.instantiate() as Area2D
-	orb.position = random_value.global_position
-	#last_spawned_orb = orb.selected_orb.texture
-	add_child(orb)
-	
+	#var random_index = randi() % marker_position_arr.size()
+	#var random_value = marker_position_arr[random_index] as Marker2D
+	#var orb = orb_scene.instantiate() as Area2D
+	#orb.position = random_value.global_position
+	##last_spawned_orb = orb.selected_orb.texture
+	#add_child(orb)
+	pass
 	
 
 func _on_orb_spawn_t_imer_timeout():
@@ -63,7 +64,7 @@ func change_background_music():
 
 #background and camera func
 func update_camera_position(delta):
-	camera_2d.position.x += 400 * delta
+	camera_2d.position.x += MIN_CAM_SPEED * delta
 
 func _on_despawn_area_2d_area_entered(area):
 	area.queue_free()
@@ -115,3 +116,12 @@ func game_over():
 	
 func restart():
 	get_tree().reload_current_scene()
+
+
+
+func _on_player_speed_killswitch_body_entered(body):
+	body.killSitch_sub(true)
+
+
+func _on_player_speed_killswitch_body_exited(body):
+	body.killSitch_sub(false)

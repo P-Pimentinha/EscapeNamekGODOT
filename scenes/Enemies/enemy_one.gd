@@ -13,7 +13,7 @@ const BURNING_FLOOR = preload("res://scenes/obstacles/burning_floor/burning_floo
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animated_sprite_2d.play("default")
-	fire_timer.start()
+	#fire_timer.start()
 	projectile_timer.start()
 	
 	

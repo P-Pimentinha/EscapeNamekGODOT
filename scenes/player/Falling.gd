@@ -10,9 +10,9 @@ func Enter():
 	animated_sprite_2d.play("jump")
 	
 
-func Physics_Update(_delta : float):
-	falling(_delta)
-		
+func Physics_Update(delta : float):
+	falling(delta)
+	player.aceletate_slow_down()
 	
 func Exit():
 	pass

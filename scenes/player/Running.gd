@@ -16,13 +16,15 @@ func Enter():
 		#print("Using")
 		
 
-func Physics_Update(_delta : float):
+func Physics_Update(delta: float):
+	
+	
+	player.velocity.y += player.GRAVITY * delta
+	player.move()
+	player.aceletate_slow_down()
 	trans_jump()
 	trans_slide()
-	player.move()
 	
-	
-		
 	
 func Exit():
 	run_colision_shape.disabled = true
@@ -34,6 +36,7 @@ func trans_jump():
 func trans_slide():
 	if Input.is_action_just_pressed("slide"):
 		state_transition.emit(self, "Slide")
+
 
 #func transition_to_walk():
 	#if(Input.get_vector("Left", "Right", "Up", "Down").normalized()):
