@@ -12,14 +12,12 @@ const GRAVITY: int = 4200
 const JUMP_SPEED: int = -1800
 
 #moving speed
-
 const STOP_SPEED: float = 0
 const MIN_SPEED: float = 400.0
 const MAX_SPEED: float = 550
 var current_speed: float = MIN_SPEED
 var added_speed: int = 0
-var add_speed_kill_switch: bool = false
-var sub_speed_kill_switch: bool = false
+var accelerate_kill_switch: bool = false
 
 func move():
 	velocity.x = current_speed + (added_speed)
@@ -29,26 +27,21 @@ func stop():
 	velocity.x = STOP_SPEED
 
 func aceletate_slow_down():
-	if Input.is_action_pressed("right") and !add_speed_kill_switch:
+	if Input.is_action_pressed("right") and !accelerate_kill_switch:
 		added_speed = 100
 	if Input.is_action_just_released("right"):
 		added_speed = 0
 	
-	elif Input.is_action_pressed("left") and !sub_speed_kill_switch:
+	elif Input.is_action_pressed("left"):
 		added_speed = -100
 	elif Input.is_action_just_released("left"):
 		added_speed = 0
-
-func killSitch_add(value: bool):
-	add_speed_kill_switch = value
-	if value == true:
+	
+	
+func kill_switch_on_off(value: bool):
+	accelerate_kill_switch = value
+	if value:
 		added_speed = 0
-
-func killSitch_sub(value: bool):
-	sub_speed_kill_switch = value
-	if value == true:
-		added_speed = 0
-#@onready var run_col = $RunCol
 #@onready var duck_col = $DuckCol
 
 ## Called when the node enters the scene tree for the first time.

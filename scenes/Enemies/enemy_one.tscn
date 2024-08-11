@@ -106,7 +106,7 @@ position = Vector2(-26, 55)
 position = Vector2(1, 18)
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
+one_shot = true
 
 [node name="ProjectileTimer" type="Timer" parent="."]
 one_shot = true

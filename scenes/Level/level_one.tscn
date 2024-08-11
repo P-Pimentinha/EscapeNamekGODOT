@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcyweb3euj5t3"]
+[gd_scene load_steps=16 format=3 uid="uid://dcyweb3euj5t3"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_o2iu3"]
 [ext_resource type="Script" path="res://scenes/Level/level_one.gd" id="2_lweq2"]
@@ -14,6 +14,12 @@
 [ext_resource type="AudioStream" uid="uid://ch7pyr6qgtw0g" path="res://assets/sound/soundtrack/escape_namek_sample_second.ogg" id="10_lpmh3"]
 [ext_resource type="AudioStream" uid="uid://hppngw6xx548" path="res://assets/sound/soundtrack/escape_namek_sample_third.ogg" id="11_ilsvu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7jnd"]
+size = Vector2(20, 176.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_extpp"]
+size = Vector2(27.8333, 152.333)
+
 [node name="LevelOne" instance=ExtResource("1_o2iu3")]
 script = ExtResource("2_lweq2")
 level_resources = ExtResource("3_hma6g")
@@ -21,6 +27,7 @@ level_resources = ExtResource("3_hma6g")
 [node name="BackGround" parent="." index="0" instance=ExtResource("2_wubu7")]
 
 [node name="Player" parent="." index="1" instance=ExtResource("3_qwflr")]
+unique_name_in_owner = true
 position = Vector2(73, 524)
 
 [node name="Ground" parent="." index="2" instance=ExtResource("4_0d23u")]
@@ -57,14 +64,31 @@ collision_mask = 24
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/despawn_area2D" index="0"]
 polygon = PackedVector2Array(-202.667, -89.3333, -202.667, 124, 250.667, 124, 250.667, 150.667, -245.333, 142.667, -237.333, -129.333, 221.333, -145.333, 205.333, -116, -205.333, -118.667)
 
-[node name="player_speed_killswitch" type="Area2D" parent="Camera2D" index="7"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D" index="7"]
 collision_layer = 32
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/player_speed_killswitch" index="0"]
-polygon = PackedVector2Array(-182.333, -108.333, -191.333, -108.333, -191.333, 108, -183.667, 109.667)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D" index="0"]
+position = Vector2(-189.333, -5.83333)
+shape = SubResource("RectangleShape2D_r7jnd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="8"]
+position = Vector2(139.333, 1.66667)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2" index="0"]
+position = Vector2(-57, -6.33333)
+shape = SubResource("RectangleShape2D_r7jnd")
+
+[node name="Area2D" type="Area2D" parent="Camera2D" index="9"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D" index="0"]
+position = Vector2(176.333, 7)
+shape = SubResource("RectangleShape2D_extpp")
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
+visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
 
@@ -85,6 +109,6 @@ stream = ExtResource("10_lpmh3")
 stream = ExtResource("11_ilsvu")
 
 [connection signal="area_entered" from="Camera2D/despawn_area2D" to="." method="_on_despawn_area_2d_area_entered"]
-[connection signal="body_entered" from="Camera2D/player_speed_killswitch" to="." method="_on_player_speed_killswitch_body_entered"]
-[connection signal="body_exited" from="Camera2D/player_speed_killswitch" to="." method="_on_player_speed_killswitch_body_exited"]
+[connection signal="body_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Camera2D/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timers/Orb_Spawn_TImer" to="." method="_on_orb_spawn_t_imer_timeout"]

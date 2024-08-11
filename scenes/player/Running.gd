@@ -17,8 +17,6 @@ func Enter():
 		
 
 func Physics_Update(delta: float):
-	
-	
 	player.velocity.y += player.GRAVITY * delta
 	player.move()
 	player.aceletate_slow_down()

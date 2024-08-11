@@ -12,6 +12,7 @@ extends MainRootScene
 @onready var restart_button = $Control/CanvasLayer
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
+@onready var floor_burning_position = $Camera2D/FloorBurningPosition
 
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 var last_spawned_orb
@@ -38,6 +39,7 @@ func _physics_process(delta):
 	player_wins()
 	game_over()
 	change_background_music()
+	
 
 #orb logic
 func spawn_orbs():
@@ -125,3 +127,11 @@ func _on_player_speed_killswitch_body_entered(body):
 
 func _on_player_speed_killswitch_body_exited(body):
 	body.killSitch_sub(false)
+
+
+func _on_area_2d_body_entered(body):
+	body.kill_switch_on_off(true)
+
+
+func _on_area_2d_body_exited(body):
+	body.kill_switch_on_off(false)
