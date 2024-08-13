@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cjd7awv4ebehf" path="res://assets/art/Enemies/LevelOne/enemy_2_reboot.png" id="5_0xxg6"]
 [ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="5_cp75e"]
 [ext_resource type="Script" path="res://scenes/Enemies/Initial.gd" id="6_47mk0"]
-[ext_resource type="Script" path="res://scenes/Enemies/EnemyLEvelOneFSM.gd" id="8_s1mpa"]
-[ext_resource type="Script" path="res://scenes/Enemies/EnemyLevelTwoFSM.gd" id="9_ampih"]
+[ext_resource type="Script" path="res://scenes/Enemies/Node.gd" id="7_8m4wr"]
+[ext_resource type="Script" path="res://scenes/Enemies/LevelTwo.gd" id="8_mme15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu0qa"]
 atlas = ExtResource("3_jjt2y")
@@ -150,7 +150,7 @@ initial_state = NodePath("Initial")
 script = ExtResource("6_47mk0")
 
 [node name="LevelOne" type="Node" parent="FSM"]
-script = ExtResource("8_s1mpa")
+script = ExtResource("7_8m4wr")
 
 [node name="LevelTwo" type="Node" parent="FSM"]
-script = ExtResource("9_ampih")
+script = ExtResource("8_mme15")

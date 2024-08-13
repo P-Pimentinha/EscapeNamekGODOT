@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg0j30lj1231i"]
+[gd_scene load_steps=13 format=3 uid="uid://bg0j30lj1231i"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_6q7t6"]
 [ext_resource type="Script" path="res://scenes/Level/level_2.gd" id="2_151y6"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="5_ynxe1"]
 [ext_resource type="Texture2D" uid="uid://wyf1thkjginn" path="res://assets/art/ToDEl/ToDel.png" id="6_5fsxb"]
 [ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="6_pfiwl"]
+[ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="7_25v85"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="7_dd7hj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l4yvb"]
@@ -42,6 +43,12 @@ layer_0/tile_data = PackedInt32Array(917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 9
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 position = Vector2(576, 324)
+scale = Vector2(3, 3)
+
+[node name="EnemyOne" parent="Camera2D" index="0" instance=ExtResource("7_25v85")]
+position = Vector2(165.333, 36)
+scale = Vector2(0.667, 0.667)
+level_to_load = "LevelTwo"
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("5_ynxe1")]
 process_mode = 2

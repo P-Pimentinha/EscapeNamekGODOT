@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name EnemyOne
 
+@export_enum("LevelOne", "LevelTwo") var level_to_load: String
 #const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.tscn")
 #const BURNING_FLOOR = preload("res://scenes/obstacles/burning_floor/burning_floor.tscn")
 #const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/energy_strike_zone.tscn")

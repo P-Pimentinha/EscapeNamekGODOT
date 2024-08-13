@@ -57,6 +57,7 @@ scale = Vector2(0.333333, 0.333333)
 [node name="EnemyOne" parent="Camera2D" index="5" instance=ExtResource("7_xmely")]
 position = Vector2(144.333, 25)
 scale = Vector2(0.666667, 0.666667)
+level_to_load = "LevelOne"
 
 [node name="despawn_area2D" type="Area2D" parent="Camera2D" index="6"]
 collision_layer = 4
