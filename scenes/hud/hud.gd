@@ -7,7 +7,8 @@ extends CanvasLayer
 @onready var main_menu = $main_menu
 @onready var keybinding_menu = $keybinding_menu
 
-signal unpause_game
+signal unpause_game_hud
+signal start_game_hud
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,8 +43,10 @@ func return_initial_menu():
 	keybinding_menu.hide()
 
 func menu_controls():
-	if Input.is_action_just_pressed("right"):
-		unpause_game.emit()
+	if Input.is_action_just_pressed("right") and GameControl.is_new_game:
+		start_game_hud.emit()
+	if Input.is_action_just_pressed("right") and !GameControl.is_new_game:
+		unpause_game_hud.emit()
 	if GameControl.is_player_on_menu and Input.is_action_just_pressed("Menu_Show_Keys"):
 		show_key_bindings()
 	if GameControl.is_player_on_menu and Input.is_action_just_pressed("menu_return"):

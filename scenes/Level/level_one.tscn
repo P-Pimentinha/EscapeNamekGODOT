@@ -50,6 +50,7 @@ position = Vector2(221.333, 33.3333)
 position = Vector2(218.667, 62.6667)
 
 [node name="FloorBurningPosition" type="Marker2D" parent="Camera2D" index="4"]
+unique_name_in_owner = true
 position = Vector2(126.333, 81.6667)
 scale = Vector2(0.333333, 0.333333)
 
@@ -88,7 +89,6 @@ shape = SubResource("RectangleShape2D_extpp")
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
-visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
 

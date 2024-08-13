@@ -42,6 +42,8 @@ func kill_switch_on_off(value: bool):
 	accelerate_kill_switch = value
 	if value:
 		added_speed = 0
+
+
 #@onready var duck_col = $DuckCol
 
 ## Called when the node enters the scene tree for the first time.

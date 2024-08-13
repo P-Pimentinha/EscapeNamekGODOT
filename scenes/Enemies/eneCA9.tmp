@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfofpmfo51iol"]
+[gd_scene load_steps=18 format=3 uid="uid://cfofpmfo51iol"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/enemy_one.gd" id="1_oj0rx"]
 [ext_resource type="Texture2D" uid="uid://diwxkq4ug5d3v" path="res://assets/art/Enemies/LevelOne/floating_board.png" id="2_fjxyq"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="5_cp75e"]
 [ext_resource type="Script" path="res://scenes/Enemies/Initial.gd" id="6_47mk0"]
 [ext_resource type="Script" path="res://scenes/Enemies/Node.gd" id="7_8m4wr"]
-[ext_resource type="Script" path="res://scenes/Enemies/LevelTwo.gd" id="8_mme15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu0qa"]
 atlas = ExtResource("3_jjt2y")
@@ -124,6 +123,3 @@ script = ExtResource("6_47mk0")
 
 [node name="LevelOne" type="Node" parent="FSM"]
 script = ExtResource("7_8m4wr")
-
-[node name="LevelTwo" type="Node" parent="FSM"]
-script = ExtResource("8_mme15")

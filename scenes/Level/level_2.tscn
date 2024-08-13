@@ -1,0 +1,54 @@
+[gd_scene load_steps=12 format=3 uid="uid://bg0j30lj1231i"]
+
+[ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_6q7t6"]
+[ext_resource type="Script" path="res://scenes/Level/level_2.gd" id="2_151y6"]
+[ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="3_4ykdw"]
+[ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="4_d5dfk"]
+[ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="5_na3wk"]
+[ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="5_ynxe1"]
+[ext_resource type="Texture2D" uid="uid://wyf1thkjginn" path="res://assets/art/ToDEl/ToDel.png" id="6_5fsxb"]
+[ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="6_pfiwl"]
+[ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="7_dd7hj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l4yvb"]
+texture = ExtResource("6_5fsxb")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSet" id="TileSet_x4l7r"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 32
+sources/0 = SubResource("TileSetAtlasSource_l4yvb")
+
+[node name="Level2" instance=ExtResource("1_6q7t6")]
+script = ExtResource("2_151y6")
+
+[node name="BackGround" parent="." index="0" instance=ExtResource("3_4ykdw")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("4_d5dfk")]
+unique_name_in_owner = true
+position = Vector2(80, 536)
+
+[node name="Ground" parent="." index="2" instance=ExtResource("5_na3wk")]
+
+[node name="TileMap" type="TileMap" parent="." index="3"]
+tile_set = SubResource("TileSet_x4l7r")
+format = 2
+layer_0/tile_data = PackedInt32Array(917515, 0, 0, 917516, 0, 0, 917517, 0, 0, 917518, 0, 0, 917519, 0, 0, 917520, 0, 0, 917521, 0, 0, 917522, 0, 0, 917523, 0, 0, 917524, 0, 0, 655386, 0, 0, 655387, 0, 0, 655388, 0, 0, 655389, 0, 0, 655390, 0, 0, 655391, 0, 0, 655392, 0, 0, 655393, 0, 0, 1048615, 0, 0, 1048616, 0, 0, 1048617, 0, 0, 1048618, 0, 0, 1048619, 0, 0, 1048620, 0, 0, 1048621, 0, 0, 1048622, 0, 0, 852018, 0, 0, 852019, 0, 0, 852020, 0, 0, 852021, 0, 0, 852022, 0, 0, 852023, 0, 0, 852024, 0, 0, 852025, 0, 0, 589886, 0, 0, 589887, 0, 0, 589888, 0, 0, 589889, 0, 0, 589890, 0, 0, 589891, 0, 0, 589892, 0, 0, 589893, 0, 0, 852045, 0, 0, 852046, 0, 0, 852047, 0, 0, 852048, 0, 0, 852049, 0, 0, 852050, 0, 0, 852051, 0, 0, 852052, 0, 0, 1048668, 0, 0, 1048669, 0, 0, 1048670, 0, 0, 1048671, 0, 0, 1048672, 0, 0, 1048673, 0, 0, 1048674, 0, 0, 786537, 0, 0, 786538, 0, 0, 786539, 0, 0, 786540, 0, 0, 786541, 0, 0, 786542, 0, 0, 786543, 0, 0, 786544, 0, 0, 1048694, 0, 0, 1048695, 0, 0, 1048696, 0, 0, 1048697, 0, 0, 1048698, 0, 0, 1048699, 0, 0, 1048700, 0, 0, 1048701, 0, 0, 786562, 0, 0, 786563, 0, 0, 786564, 0, 0, 786565, 0, 0, 786566, 0, 0, 786567, 0, 0, 786568, 0, 0, 786569, 0, 0, 1048721, 0, 0, 1048722, 0, 0, 1048723, 0, 0, 1048724, 0, 0, 1048725, 0, 0, 1048726, 0, 0, 1048727, 0, 0, 1048728, 0, 0, 786588, 0, 0, 786589, 0, 0, 786590, 0, 0, 786591, 0, 0, 786592, 0, 0, 786593, 0, 0, 786594, 0, 0, 786595, 0, 0, 786596, 0, 0, 1048746, 0, 0, 1048747, 0, 0, 1048748, 0, 0, 1048749, 0, 0, 1048750, 0, 0, 1048751, 0, 0, 1048752, 0, 0, 1048753, 0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
+position = Vector2(576, 324)
+
+[node name="hud" parent="Control" index="0" instance=ExtResource("5_ynxe1")]
+process_mode = 2
+visible = false
+
+[node name="HudGameplay" parent="Control" index="1" instance=ExtResource("6_pfiwl")]
+
+[node name="CanvasLayer" parent="Control" index="2" instance=ExtResource("7_dd7hj")]
+process_mode = 2
+visible = false

@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s33en"]
 bg_color = Color(0, 0.717647, 0.396078, 1)
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer"]
 
 [node name="Button" type="Button" parent="."]
 anchors_preset = 8

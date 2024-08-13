@@ -10,3 +10,25 @@ func _ready():
 func _process(delta):
 	#print(Engine.get_frames_per_second())
 	pass
+
+func new_game(scene_new_game: Callable):
+	get_tree().paused = true
+	GameControl.new_game()
+#move to different function?
+	ScoreGlobals.reset_total_current_score()
+	scene_new_game.call()
+
+func pause_game(hud: CanvasLayer):
+	if Input.is_action_pressed("pause"):
+		GameControl.pause_game()
+		hud.show_hud()
+		get_tree().paused = true
+
+func unpause_game(hud):
+	
+	get_tree().paused = false
+	hud.hide_hud()
+	GameControl.unpause_game()
+
+func restart():
+	get_tree().reload_current_scene()
