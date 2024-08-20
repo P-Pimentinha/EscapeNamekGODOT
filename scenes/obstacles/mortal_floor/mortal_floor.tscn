@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://gnu6vob8g7ra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47v31"]
+size = Vector2(2303, 91)
+
+[node name="Mortal_Floor" type="Area2D"]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1151.5, 45.5)
+shape = SubResource("RectangleShape2D_47v31")
+debug_color = Color(0.854902, 0, 0.207843, 0.419608)

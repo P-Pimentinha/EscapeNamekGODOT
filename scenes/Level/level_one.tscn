@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcyweb3euj5t3"]
+[gd_scene load_steps=17 format=3 uid="uid://dcyweb3euj5t3"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_o2iu3"]
 [ext_resource type="Script" path="res://scenes/Level/level_one.gd" id="2_lweq2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="3_qwflr"]
 [ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="4_0d23u"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="4_3x7le"]
+[ext_resource type="Texture2D" uid="uid://cmoxcneu5nucc" path="res://assets/art/background/dark/background6dark.png" id="5_70bu6"]
 [ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="7_xmely"]
 [ext_resource type="AudioStream" uid="uid://lv0nwr2wepru" path="res://assets/sound/soundtrack/escape_namek_sample_first.ogg" id="9_rlais"]
 [ext_resource type="AudioStream" uid="uid://ch7pyr6qgtw0g" path="res://assets/sound/soundtrack/escape_namek_sample_second.ogg" id="10_lpmh3"]
@@ -25,6 +26,7 @@ script = ExtResource("2_lweq2")
 level_resources = ExtResource("3_hma6g")
 
 [node name="BackGround" parent="." index="0" instance=ExtResource("2_wubu7")]
+terrain = ExtResource("5_70bu6")
 
 [node name="Player" parent="." index="1" instance=ExtResource("3_qwflr")]
 unique_name_in_owner = true
