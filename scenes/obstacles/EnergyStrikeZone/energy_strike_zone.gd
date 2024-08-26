@@ -7,7 +7,7 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	danger_area.stop()
-	danger_area.play()
+	danger_area.play("animation1")
 	
 	
 
@@ -16,9 +16,10 @@ func _ready():
 
 
 func _on_danger_area_animation_finished():
+	danger_area.visible=false
 	energy_strike.visible = true
 	collision_shape_2d.disabled = false
-	energy_strike.play()
+	energy_strike.play("new_animation")
 
 
 func _on_energy_strike_animation_finished():

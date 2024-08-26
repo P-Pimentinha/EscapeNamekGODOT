@@ -3,6 +3,7 @@ extends State
 const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.tscn")
 const BURNING_FLOOR = preload("res://scenes/obstacles/burning_floor/burning_floor.tscn")
 const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/energy_strike_zone.tscn")
+const ENERGY_STRIKE_Y_POSITION = 560
 @onready var marker_2d: Array = [$"../../Marker2D", $"../../Marker2D2", $"../../Marker2D3"]
 @onready var fire_timer = $"../../FireTimer"
 @onready var projectile_timer = $"../../ProjectileTimer"
@@ -56,7 +57,9 @@ func spawn_energy_strike():
 	var energy_strike_zone = ENERGY_STRIKE_ZONE.instantiate() as Area2D
 	var random_x_offset = randi_range(-120,120)
 	parent_node.add_child(energy_strike_zone)
-	energy_strike_zone.global_position = position_node.global_position + Vector2(random_x_offset,0)
+	#energy_strike_zone.global_position.x = position_node.global_position.x + Vector2(random_x_offset,0)
+	energy_strike_zone.global_position.x = position_node.global_position.x
+	energy_strike_zone.global_position.y = ENERGY_STRIKE_Y_POSITION
 	
 
 func end_attack_animation():
@@ -68,7 +71,7 @@ func timer_settings():
 	add_child(timer_egergy_strike)
 	timer_egergy_strike.one_shot = true
 	timer_egergy_strike.autostart = false
-	timer_egergy_strike.wait_time = 5.0
+	timer_egergy_strike.wait_time = 3.0
 	timer_egergy_strike.start()
 	
 	add_child(timer_projectiles)

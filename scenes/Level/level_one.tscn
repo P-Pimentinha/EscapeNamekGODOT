@@ -27,6 +27,7 @@ level_resources = ExtResource("3_hma6g")
 
 [node name="BackGround" parent="." index="0" instance=ExtResource("2_wubu7")]
 terrain = ExtResource("5_70bu6")
+level = 1
 
 [node name="Player" parent="." index="1" instance=ExtResource("3_qwflr")]
 unique_name_in_owner = true

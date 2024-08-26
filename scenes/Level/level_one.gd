@@ -115,7 +115,7 @@ func game_over():
 #func _on_player_speed_killswitch_body_exited(body):
 	#body.killSitch_sub(false)
 
-
+#Alternative to Static Body 2D --- Currently not in use
 func _on_area_2d_body_entered(body):
 	body.kill_switch_on_off(true)
 

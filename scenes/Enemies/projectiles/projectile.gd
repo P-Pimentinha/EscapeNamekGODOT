@@ -2,6 +2,7 @@ extends Area2D
 
 @export var speed: int = 500
 @onready var sprite_2d = $Sprite2D
+@onready var animated_sprite_2d = $AnimatedSprite2D
 var direction: Vector2 = Vector2(-1,0)
 var can_move = false
 var X_DIRECTION: int = -1
@@ -28,40 +29,19 @@ func move_projectile(delta):
 		position += direction * speed * delta
 	
 func projectile_animation():
+	animated_sprite_2d.play()
 	var tween= create_tween()
-	tween.tween_property(sprite_2d, "scale", Vector2(3,3), 1)
+	tween.tween_property(animated_sprite_2d, "scale", Vector2(0.6,0.6),1)
 	await tween.finished
 	animation_finished.emit()
 	can_move = true
+	
 #
-#
-#extends Area2D
-#
-#@export var speed : int = 2000
-#var direction: Vector2 = Vector2.UP
-## Called when the node enters the scene tree for the first time.
-#func _ready():
-	#$Timer.set_wait_time(2)
-	#$Timer.start()
-	#
-	#
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#position += direction * speed * delta
-	#
-#
-#
-#func _on_body_entered(body):
-	#if "hit" in body:
-		#body.hit()
-	#queue_free()
-	#
-#
-#
-#func _on_timer_timeout():
-	#queue_free()
+func switch_textures():
+	sprite_2d.visible = false
+	animated_sprite_2d.visible = true
+	animated_sprite_2d.play()
+
 
 
 

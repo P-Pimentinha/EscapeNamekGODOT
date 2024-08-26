@@ -471,6 +471,7 @@ script = ExtResource("2_151y6")
 
 [node name="BackGround" parent="." index="0" instance=ExtResource("3_4ykdw")]
 terrain = ExtResource("4_bo1r0")
+level = 2
 
 [node name="Player" parent="." index="1" instance=ExtResource("4_d5dfk")]
 unique_name_in_owner = true
