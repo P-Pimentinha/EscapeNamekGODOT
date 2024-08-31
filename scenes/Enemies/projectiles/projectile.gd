@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed: int = 500
+@export var score_to_be_taken: int = -5
 @onready var sprite_2d = $Sprite2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 var direction: Vector2 = Vector2(-1,0)
@@ -21,7 +22,8 @@ func _physics_process(delta):
 	
 func _on_body_entered(body):
 	if body is PlayerMain:
-		print(body)
+		ScoreGlobals.add_current_score(score_to_be_taken)
+		queue_free()
 		
 
 func move_projectile(delta):

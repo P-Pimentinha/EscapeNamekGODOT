@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cu6xe5rlnnmx"]
+[gd_scene load_steps=21 format=3 uid="uid://cu6xe5rlnnmx"]
 
 [ext_resource type="Script" path="res://scenes/scenario/background.gd" id="1_ne1bc"]
 [ext_resource type="Texture2D" uid="uid://b4rb7xpxievfm" path="res://assets/art/background/dark/background1dark.png" id="2_h1pke"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cjfatsb07arei" path="res://assets/art/background/dark/background4dark.png" id="8_oxecp"]
 [ext_resource type="Texture2D" uid="uid://dtil1ajmjpfqc" path="res://assets/art/background/dark/background5dark.png" id="9_3wu3x"]
 [ext_resource type="Texture2D" uid="uid://cmoxcneu5nucc" path="res://assets/art/background/dark/background6dark.png" id="10_5krtc"]
-[ext_resource type="Texture2D" uid="uid://dafe0b33rr50d" path="res://assets/art/background/dark/level2/mortal_floor.png" id="11_1qu17"]
 [ext_resource type="AudioStream" uid="uid://rpw8pxeqbldv" path="res://assets/sound/thunder.mp3" id="11_jx8gn"]
+[ext_resource type="Texture2D" uid="uid://5nl3boko1ndy" path="res://assets/art/background/dark/level2/mortal_floor_2.png" id="11_witlx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7fdl"]
 atlas = ExtResource("5_rnsjf")
@@ -61,26 +61,47 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_72cxx"]
-atlas = ExtResource("11_1qu17")
-region = Rect2(0, 324, 2304, 324)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hipr8"]
+atlas = ExtResource("11_witlx")
+region = Rect2(0, 0, 2304, 648)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0xaw"]
-atlas = ExtResource("11_1qu17")
-region = Rect2(2304, 324, 2304, 324)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgokd"]
+atlas = ExtResource("11_witlx")
+region = Rect2(2304, 0, 2304, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ruh"]
+atlas = ExtResource("11_witlx")
+region = Rect2(4608, 0, 2304, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udrl8"]
+atlas = ExtResource("11_witlx")
+region = Rect2(6912, 0, 2304, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3nu5"]
+atlas = ExtResource("11_witlx")
+region = Rect2(9216, 0, 2304, 648)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibmsf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_72cxx")
+"texture": SubResource("AtlasTexture_hipr8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y0xaw")
+"texture": SubResource("AtlasTexture_qgokd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ruh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udrl8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3nu5")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="BackGround" type="ParallaxBackground"]
@@ -133,10 +154,9 @@ texture = ExtResource("10_5krtc")
 centered = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor"]
-position = Vector2(1152, 486)
+position = Vector2(1152, 324)
 sprite_frames = SubResource("SpriteFrames_ibmsf")
-frame = 1
-frame_progress = 0.569285
+frame_progress = 0.482819
 
 [node name="Audios" type="Node2D" parent="."]
 

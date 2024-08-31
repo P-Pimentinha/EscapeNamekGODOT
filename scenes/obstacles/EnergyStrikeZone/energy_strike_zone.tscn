@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://j2eau5cc4dwg"]
+[gd_scene load_steps=25 format=3 uid="uid://j2eau5cc4dwg"]
 
 [ext_resource type="Script" path="res://scenes/obstacles/EnergyStrikeZone/energy_strike_zone.gd" id="1_ckkyi"]
 [ext_resource type="Texture2D" uid="uid://cwjswvr4fmhor" path="res://assets/art/obstacles/energy_strike_zone/energy_strike_3.png" id="2_ls84y"]
@@ -8,64 +8,99 @@
 radius = 20.0
 height = 80.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5cyfi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45oj8"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(0, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vm3gq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_frn2v"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(149, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_86cc3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaihh"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(298, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j16iw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmse4"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(447, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_62x34"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7drn"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(596, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5r3r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbyv8"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(745, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dhuwe"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4a6d"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(894, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sm040"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdpn8"]
 atlas = ExtResource("2_ls84y")
 region = Rect2(1043, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbsw1"]
+atlas = ExtResource("2_ls84y")
+region = Rect2(1192, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shue1"]
+atlas = ExtResource("2_ls84y")
+region = Rect2(1341, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu1dh"]
+atlas = ExtResource("2_ls84y")
+region = Rect2(1490, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pmff"]
+atlas = ExtResource("2_ls84y")
+region = Rect2(1639, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxlfn"]
+atlas = ExtResource("2_ls84y")
+region = Rect2(1788, 0, 149, 121)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qmvqr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5cyfi")
+"texture": SubResource("AtlasTexture_45oj8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vm3gq")
+"texture": SubResource("AtlasTexture_frn2v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_86cc3")
+"texture": SubResource("AtlasTexture_uaihh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j16iw")
+"texture": SubResource("AtlasTexture_hmse4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_62x34")
+"texture": SubResource("AtlasTexture_f7drn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b5r3r")
+"texture": SubResource("AtlasTexture_pbyv8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dhuwe")
+"texture": SubResource("AtlasTexture_j4a6d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sm040")
+"texture": SubResource("AtlasTexture_sdpn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbsw1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shue1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu1dh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pmff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxlfn")
 }],
 "loop": false,
 "name": &"animation1",
@@ -128,7 +163,6 @@ disabled = true
 [node name="DangerArea" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qmvqr")
 animation = &"animation1"
-frame = 1
 frame_progress = 0.17826
 
 [node name="EnergyStrike" type="AnimatedSprite2D" parent="."]
