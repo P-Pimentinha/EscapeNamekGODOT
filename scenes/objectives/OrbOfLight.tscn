@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjkesqfcrj4im"]
+[gd_scene load_steps=14 format=3 uid="uid://bjkesqfcrj4im"]
 
 [ext_resource type="Script" path="res://scenes/objectives/orb_of_light.gd" id="1_f5nc8"]
-[ext_resource type="Texture2D" uid="uid://bxgx527axbdww" path="res://assets/art/objectives/orbs/orb_light_red.png" id="2_fv863"]
 [ext_resource type="Texture2D" uid="uid://bqaovs71k668j" path="res://assets/art/objectives/orbs/orb_black_3.2_64.png" id="3_mxdbi"]
 [ext_resource type="Texture2D" uid="uid://da5fpp2rovocd" path="res://assets/art/objectives/orbs/orb_3.2_64.png" id="3_w4imo"]
 
@@ -80,10 +79,6 @@ animations = [{
 [node name="OrbOfLight" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_f5nc8")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_fv863")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_18vxh")

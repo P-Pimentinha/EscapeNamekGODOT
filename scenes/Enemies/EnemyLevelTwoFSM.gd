@@ -10,7 +10,7 @@ const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.t
 @onready var timer_projectiles: Timer = Timer.new()
 
 func Enter():
-	animated_sprite_2d.position = Vector2(8,13)
+	animated_sprite_2d.position = Vector2(16,16)
 	animated_sprite_2d.play("reboot")
 	hoverboard_sprite.play("reboot")
 	timer_settings()

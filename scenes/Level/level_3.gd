@@ -1,12 +1,17 @@
 extends MainRootScene
 
-@onready var player = $Player
+
+@onready var player = %Player
 @onready var camera_2d = $Camera2D
-@onready var hud = $Control/hud
-@onready var restart_button = $Control/CanvasLayer
 @onready var ground = $Ground
-@onready var mortal_floor = $Mortal_Floor
-@onready var tile_map = $TileMap
+@onready var hud = $Control/hud
+@onready var restart_button = $Control/GameOver
+@onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
+@onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
+@onready var floor_burning_position = $Camera2D/FloorBurningPosition
+
+var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
+var last_spawned_orb
 
 const PLAYER_START_POSITION := Vector2i(100, 528)
 const CAM_START_POS := Vector2i(576, 324)
@@ -14,7 +19,6 @@ const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
 
 var screen_size: Vector2i
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	super()
 	screen_size = get_window().size
@@ -22,33 +26,40 @@ func _ready():
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
-	
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
+	##update ground position
 	if GameControl.is_game_running:
 		update_camera_position(delta)
 		update_ground_position()
 	pause_game(hud)
+	player_wins()
+	game_over()
+	#change_background_music()
+	
+#orb logic
+func spawn_orbs():
+	var random_index = randi() % marker_position_arr.size()
+	var random_value = marker_position_arr[random_index] as Marker2D
+	var orb = orb_scene.instantiate() as Area2D
+	orb.position = random_value.global_position
+	#last_spawned_orb = orb.selected_orb.texture
+	add_child(orb)
+	#pass
 
+func _on_orb_spawn_t_imer_timeout():
+	spawn_orbs()
 
 #background and camera func
 func update_camera_position(delta):
 	camera_2d.position.x += MIN_CAM_SPEED * delta
 
+func _on_despawn_area_2d_area_entered(area):
+	area.queue_free()
 
 func update_ground_position():
 	if camera_2d.position.x - ground.position.x > screen_size.x * 1.5:
 		ground.position.x += screen_size.x
-		mortal_floor.position.x += screen_size.x
-
-func _on_despawn_area_area_entered(area):
-	print(area)
-	area.queue_free()
-	
 
 #game state
 func scene_new_game():
@@ -56,12 +67,12 @@ func scene_new_game():
 	player.position = PLAYER_START_POSITION
 	player.velocity = Vector2i(0, 0)
 	camera_2d.position = CAM_START_POS
-	#test_g_round.position = Vector2i(0, 0)
+	ground.position = Vector2i(0, 0)
 
 func start_game():
 	get_tree().paused = false
 	hud.hide_hud()
-	#orb_spawn_timer.start()
+	orb_spawn_timer.start()
 	GameControl.game_running()
 
 func player_wins():
@@ -73,7 +84,10 @@ func player_wins():
 		get_tree().paused = true
 	
 func game_over():
-	restart_button.show()
-	GameControl.game_over()
-	get_tree().paused = true
+	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
+		restart_button.show()
+		GameControl.game_over()
+		get_tree().paused = true
+
+
 

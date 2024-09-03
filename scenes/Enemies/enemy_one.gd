@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name EnemyOne
 
-@export_enum("LevelOne", "LevelTwo") var level_to_load: String
+@export_enum("LevelOne", "LevelTwo", "LevelThree") var level_to_load: String
 
 # Variables to control the movement
 var amplitude = 3 # The height of the wave
