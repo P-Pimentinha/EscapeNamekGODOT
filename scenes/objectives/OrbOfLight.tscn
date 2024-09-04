@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bqaovs71k668j" path="res://assets/art/objectives/orbs/orb_black_3.2_64.png" id="3_mxdbi"]
 [ext_resource type="Texture2D" uid="uid://da5fpp2rovocd" path="res://assets/art/objectives/orbs/orb_3.2_64.png" id="3_w4imo"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_18vxh"]
-radius = 16.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_60d1c"]
 atlas = ExtResource("3_mxdbi")
 region = Rect2(0, 0, 64, 64)
@@ -76,15 +73,18 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_18vxh"]
+radius = 16.0
+
 [node name="OrbOfLight" type="Area2D"]
 collision_layer = 8
 script = ExtResource("1_f5nc8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_18vxh")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ijwir")
 animation = &"black"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_18vxh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

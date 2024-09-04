@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djdlpfcl2pfg7"]
+[gd_scene load_steps=15 format=3 uid="uid://djdlpfcl2pfg7"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_jpnqj"]
 [ext_resource type="Script" path="res://scenes/Level/level_3.gd" id="2_3dxca"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://lpgbh3a740ln" path="res://scenes/hud/hud.tscn" id="8_bvhom"]
 [ext_resource type="PackedScene" uid="uid://beukonk3hblqp" path="res://scenes/hud/hud_gameplay.tscn" id="9_oo7w5"]
 [ext_resource type="PackedScene" uid="uid://p8l15kfa73es" path="res://scenes/hud/game_over.tscn" id="10_wyp71"]
+[ext_resource type="PackedScene" uid="uid://ly4582spvisp" path="res://scenes/objectives/damage_orbs/Damage_Orbs.tscn" id="11_10bwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6480"]
 size = Vector2(20, 242.667)
@@ -52,7 +53,6 @@ position = Vector2(216, 63)
 [node name="EnemyOne" parent="Camera2D" index="4" instance=ExtResource("7_lyog6")]
 position = Vector2(162.667, 30.6667)
 scale = Vector2(0.667, 0.667)
-level_to_load = "LevelThree"
 
 [node name="Area2D" type="Area2D" parent="Camera2D" index="5"]
 
@@ -91,5 +91,8 @@ process_mode = 2
 visible = false
 
 [node name="Orb_Spawn_TImer" type="Timer" parent="Timers" index="0"]
+
+[node name="DamageOrbs" parent="." index="9" instance=ExtResource("11_10bwg")]
+position = Vector2(680, 384)
 
 [connection signal="timeout" from="Timers/Orb_Spawn_TImer" to="." method="_on_orb_spawn_t_imer_timeout"]

@@ -26,3 +26,4 @@ func enemy_movement(delta):
 	
 	# Update the position
 	position.y = new_y
+

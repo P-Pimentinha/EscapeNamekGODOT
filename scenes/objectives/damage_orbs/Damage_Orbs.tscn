@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ly4582spvisp"]
+
+[ext_resource type="Texture2D" uid="uid://bqaovs71k668j" path="res://assets/art/objectives/orbs/orb_black_3.2_64.png" id="1_37qvk"]
+[ext_resource type="Script" path="res://scenes/objectives/damage_orbs/Damage_Orbs.gd" id="1_oxtof"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7raa6"]
+radius = 16.0
+
+[node name="DamageOrbs" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_oxtof")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_37qvk")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7raa6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

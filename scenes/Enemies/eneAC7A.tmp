@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cfofpmfo51iol"]
+[gd_scene load_steps=62 format=3 uid="uid://cfofpmfo51iol"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/enemy_one.gd" id="1_oj0rx"]
 [ext_resource type="Texture2D" uid="uid://c6s6fsw0ar84b" path="res://assets/art/Enemies/LevelOne/enemy_2_attack_1.png" id="3_jjt2y"]
@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ba5sas8skvc16" path="res://assets/art/Enemies/hoverboard/overboard_1.png" id="6_uiinm"]
 [ext_resource type="Texture2D" uid="uid://chofxhyractt4" path="res://assets/art/Enemies/LevelOne/reboot3.png" id="7_sm3h7"]
 [ext_resource type="Texture2D" uid="uid://cmc1dxyf7wiam" path="res://assets/art/Enemies/LevelOne/reboot_1_dps.png" id="8_6eioj"]
+[ext_resource type="Texture2D" uid="uid://bxjc0hxud7fd8" path="res://assets/art/Enemies/LevelOne/reboot_2_dps.png" id="8_imphw"]
 [ext_resource type="Script" path="res://scenes/Enemies/EnemyLEvelOneFSM.gd" id="8_s1mpa"]
 [ext_resource type="Script" path="res://scenes/Enemies/EnemyLevelTwoFSM.gd" id="9_ampih"]
-[ext_resource type="Texture2D" uid="uid://c1b2hhlb3y6o0" path="res://assets/art/Enemies/LevelOne/reboot_3_dps.png" id="10_wnqwd"]
 [ext_resource type="Script" path="res://scenes/Enemies/EnemyLevelThreeFSM.gd" id="11_ngmin"]
 [ext_resource type="Texture2D" uid="uid://cxr4734875bj2" path="res://assets/art/Enemies/hoverboard/Boss_Life_Bar_Under.png" id="16_6k1n7"]
 [ext_resource type="Texture2D" uid="uid://b0ylsu5qeatbj" path="res://assets/art/Enemies/hoverboard/Boss_Life_Bar_Progress.png" id="17_syumm"]
@@ -109,6 +109,14 @@ region = Rect2(280, 0, 140, 120)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ut7ls"]
 atlas = ExtResource("7_sm3h7")
 region = Rect2(420, 0, 140, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4fyr"]
+atlas = ExtResource("8_6eioj")
+region = Rect2(0, 0, 140, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icxhq"]
+atlas = ExtResource("8_imphw")
+region = Rect2(0, 0, 140, 120)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b8680"]
 animations = [{
@@ -209,6 +217,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"reboot3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4fyr")
+}],
+"loop": true,
+"name": &"reboot_1_dps",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icxhq")
+}],
+"loop": true,
+"name": &"reboot_2_3_dps",
 "speed": 5.0
 }]
 
@@ -354,7 +378,6 @@ size = Vector2(40, 40)
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_oj0rx")
-level_to_load = "LevelThree"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8680")
@@ -367,16 +390,6 @@ sprite_frames = SubResource("SpriteFrames_rgk0a")
 animation = &"attack_2_projectile"
 frame = 2
 frame_progress = 0.470102
-
-[node name="dps_reboot_1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(17, 17)
-texture = ExtResource("8_6eioj")
-
-[node name="dps_reboot_2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(17, 16)
-texture = ExtResource("10_wnqwd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mbw06")
@@ -410,20 +423,12 @@ script = ExtResource("9_ampih")
 script = ExtResource("11_ngmin")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+process_mode = 4
 offset_left = -52.0
 offset_top = 23.0
 offset_right = -12.0
 offset_bottom = 63.0
+value = 36.0
 fill_mode = 3
 texture_under = ExtResource("16_6k1n7")
 texture_progress = ExtResource("17_syumm")
-
-[node name="Progress_Bar_Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="Take_Damage_Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="timeout" from="Progress_Bar_Timer" to="FSM/LevelThree" method="_on_progress_bar_timer_timeout"]
-[connection signal="timeout" from="Take_Damage_Timer" to="FSM/LevelThree" method="_on_take_damage_timer_timeout"]

@@ -9,6 +9,9 @@ extends MainRootScene
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
 @onready var floor_burning_position = $Camera2D/FloorBurningPosition
+#delete
+@onready var damage_orbs = $DamageOrbs
+@onready var enemy_one = $Camera2D/EnemyOne
 
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 var last_spawned_orb
@@ -26,6 +29,11 @@ func _ready():
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
+#delete
+	var get_children_node = enemy_one.get_node("FSM/LevelThree")
+	#damage_orbs.apply_damage.connect()
+	damage_orbs.connect("apply_damage", get_children_node.chec_if_orb_can_damage)
+	#object.signal_name.connect(method_name.bind([extra, arguments]))
 
 func _physics_process(delta):
 	##update ground position
@@ -37,18 +45,19 @@ func _physics_process(delta):
 	game_over()
 	#change_background_music()
 	
-#orb logic
-func spawn_orbs():
-	var random_index = randi() % marker_position_arr.size()
-	var random_value = marker_position_arr[random_index] as Marker2D
-	var orb = orb_scene.instantiate() as Area2D
-	orb.position = random_value.global_position
-	#last_spawned_orb = orb.selected_orb.texture
-	add_child(orb)
-	#pass
+##orb logic
+#func spawn_orbs():
+	#var random_index = randi() % marker_position_arr.size()
+	#var random_value = marker_position_arr[random_index] as Marker2D
+	#var orb = orb_scene.instantiate() as Area2D
+	#orb.position = random_value.global_position
+	##last_spawned_orb = orb.selected_orb.texture
+	#add_child(orb)
+	##pass
 
 func _on_orb_spawn_t_imer_timeout():
-	spawn_orbs()
+	#spawn_orbs()
+	pass
 
 #background and camera func
 func update_camera_position(delta):
