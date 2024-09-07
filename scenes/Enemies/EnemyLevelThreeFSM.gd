@@ -42,22 +42,28 @@ func _on_progress_bar_timer_timeout():
 
 #take damage functions:
 func take_damage():
-	take_damage_timer.start()
-	progress_bar_timer.stop()
-	texture_progress_bar.value -= 5
-	progress_bar_timer.start()
-	
+	#enables damage texture
 	if reboot_stage > 75:
 		dps_reboot_1_texture.visible = true
 	else:
 		dps_reboot_1_texture.visible = true
 	
+	#timer that will disable the damage texture starts
+	take_damage_timer.start()
+	#the timer of the health bar is interrupted
+	progress_bar_timer.stop()
+	#enemy takes damage
+	texture_progress_bar.value -= 5
+	#tstarts the health bar timer
+	progress_bar_timer.start()
+	
+
+#disables all dps textures
 func _on_take_damage_timer_timeout():
 	dps_reboot_1_texture.visible = false
 	dps_reboot_1_texture.visible = false
 
 func chec_if_orb_can_damage(orb_color: String):
-	print("Hello from Enemy")
 	if orb_color == current_damage_color:
 		take_damage()
 	else:

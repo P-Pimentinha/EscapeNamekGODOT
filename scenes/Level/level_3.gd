@@ -8,13 +8,15 @@ extends MainRootScene
 @onready var restart_button = $Control/GameOver
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
-@onready var floor_burning_position = $Camera2D/FloorBurningPosition
+#@onready var floor_burning_position = $Camera2D/FloorBurningPosition
 #delete
 @onready var damage_orbs = $DamageOrbs
 @onready var enemy_one = $Camera2D/EnemyOne
 
-var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
+#orbs var
+const DAMAGE_ORBS = preload("res://scenes/objectives/damage_orbs/Damage_Orbs.tscn")
 var last_spawned_orb
+var get_gamage_orb_callBack_func
 
 const PLAYER_START_POSITION := Vector2i(100, 528)
 const CAM_START_POS := Vector2i(576, 324)
@@ -29,10 +31,11 @@ func _ready():
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
+	
 #delete
-	var get_children_node = enemy_one.get_node("FSM/LevelThree")
+	get_gamage_orb_callBack_func = enemy_one.get_node("FSM/LevelThree")
 	#damage_orbs.apply_damage.connect()
-	damage_orbs.connect("apply_damage", get_children_node.chec_if_orb_can_damage)
+	
 	#object.signal_name.connect(method_name.bind([extra, arguments]))
 
 func _physics_process(delta):
@@ -46,18 +49,21 @@ func _physics_process(delta):
 	#change_background_music()
 	
 ##orb logic
-#func spawn_orbs():
-	#var random_index = randi() % marker_position_arr.size()
-	#var random_value = marker_position_arr[random_index] as Marker2D
-	#var orb = orb_scene.instantiate() as Area2D
-	#orb.position = random_value.global_position
-	##last_spawned_orb = orb.selected_orb.texture
-	#add_child(orb)
-	##pass
+func spawn_damage_orbs():
+	#selects random orb spawn position
+	var random_index = randi() % marker_position_arr.size()
+	var spawn_marker = marker_position_arr[random_index] as Marker2D
+	#instantiates the orb and connects the signal
+	var damage_orb = DAMAGE_ORBS.instantiate() as Area2D
+	damage_orb.position = spawn_marker.global_position
+	#last_spawned_orb = orb.selected_orb.texture
+	damage_orb.connect("apply_damage", get_gamage_orb_callBack_func.chec_if_orb_can_damage)
+	add_child(damage_orb)
+	
 
 func _on_orb_spawn_t_imer_timeout():
-	#spawn_orbs()
-	pass
+	spawn_damage_orbs()
+	
 
 #background and camera func
 func update_camera_position(delta):
@@ -99,4 +105,5 @@ func game_over():
 		get_tree().paused = true
 
 
-
+func _on_area_2d_area_entered(area):
+	area.queue_free()
