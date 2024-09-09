@@ -6,6 +6,7 @@ var original_position
 var time_passed = 0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
+
 var array_of_possible_orbs : Array = [
 	{"texture": "blue", "value_to_add": 2},
 	{"texture": "black", "value_to_add": -3},
@@ -25,5 +26,5 @@ func instatiate_orb():
 	original_position = position
 
 func _on_body_entered(body):
-	ScoreGlobals.add_current_score(selected_orb["value_to_add"])
+	body.take_damage(selected_orb["value_to_add"])
 	queue_free()

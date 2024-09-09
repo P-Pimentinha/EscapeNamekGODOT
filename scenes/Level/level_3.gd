@@ -60,12 +60,11 @@ func spawn_damage_orbs():
 	damage_orb.connect("apply_damage", get_gamage_orb_callBack_func.chec_if_orb_can_damage)
 	add_child(damage_orb)
 	
-
 func _on_orb_spawn_t_imer_timeout():
 	spawn_damage_orbs()
 	
 
-#background and camera func
+#region background and camera func
 func update_camera_position(delta):
 	camera_2d.position.x += MIN_CAM_SPEED * delta
 
@@ -75,7 +74,9 @@ func _on_despawn_area_2d_area_entered(area):
 func update_ground_position():
 	if camera_2d.position.x - ground.position.x > screen_size.x * 1.5:
 		ground.position.x += screen_size.x
+#endregion
 
+#region Game State
 #game state
 func scene_new_game():
 	restart_button.hide()
@@ -103,6 +104,7 @@ func game_over():
 		restart_button.show()
 		GameControl.game_over()
 		get_tree().paused = true
+#endregion
 
 
 func _on_area_2d_area_entered(area):

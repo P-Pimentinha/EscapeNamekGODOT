@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name PlayerMain
 
+@export var score_resource: LevelOneScoreResource
 @onready var fsm = $FSM as FiniteStateMachine
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 #@onready var run_colision_shape = $Run
@@ -19,6 +20,7 @@ var current_speed: float = MIN_SPEED
 var added_speed: int = 0
 var accelerate_kill_switch: bool = false
 
+#region movement functions
 func move():
 	velocity.x = current_speed + (added_speed)
 	move_and_slide()
@@ -37,6 +39,10 @@ func aceletate_slow_down():
 	elif Input.is_action_just_released("left"):
 		added_speed = 0
 	
+#endregion
+
+func take_damage(damage: int):
+	score_resource.add_current_score(damage)
 	
 func kill_switch_on_off(value: bool):
 	accelerate_kill_switch = value

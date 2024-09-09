@@ -15,7 +15,6 @@ func new_game(scene_new_game: Callable):
 	get_tree().paused = true
 	GameControl.new_game()
 #move to different function?
-	ScoreGlobals.reset_total_current_score()
 	scene_new_game.call()
 
 func pause_game(hud: CanvasLayer):

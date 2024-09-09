@@ -1,9 +1,11 @@
 extends Area2D
 
+
 @onready var danger_area = $DangerArea
 @onready var energy_strike = $EnergyStrike
 @onready var collision_shape_2d = $CollisionShape2D
 @export var score_to_be_taken: int = -5
+@export var score_resources: LevelOneScoreResource
 
 signal animation_finished_strike_zone
 
@@ -32,5 +34,5 @@ func _on_energy_strike_animation_finished():
 
 func _on_body_entered(body):
 	if body is PlayerMain:
-		ScoreGlobals.add_current_score(score_to_be_taken)
+		body.take_damage(-5)
 		queue_free()

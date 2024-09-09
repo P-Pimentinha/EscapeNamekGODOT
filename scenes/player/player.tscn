@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://b37fx1mhr2f28"]
+[gd_scene load_steps=27 format=3 uid="uid://b37fx1mhr2f28"]
 
 [ext_resource type="Texture2D" uid="uid://2xq6e6kx2nh3" path="res://assets/art/Player/idle.png" id="1_88k04"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ivldm"]
+[ext_resource type="Resource" uid="uid://bi3ah7rxq207w" path="res://scenes/Level/score_resource.tres" id="2_ni37n"]
 [ext_resource type="Texture2D" uid="uid://us7j4k6to4w3" path="res://assets/art/Player/Sprite-0001.png" id="2_oub2a"]
 [ext_resource type="Texture2D" uid="uid://c6j2hrvvmj73t" path="res://assets/art/Player/jump.png" id="3_jpw1t"]
 [ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="4_1771s"]
@@ -119,9 +120,9 @@ size = Vector2(21, 13)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
-collision_layer = 0
 collision_mask = 186
 script = ExtResource("1_ivldm")
+score_resource = ExtResource("2_ni37n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

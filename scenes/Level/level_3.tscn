@@ -38,23 +38,28 @@ position = Vector2(80, 528)
 position = Vector2(576, 324)
 scale = Vector2(3, 3)
 
-[node name="OrbSpawnMarker" type="Marker2D" parent="Camera2D" index="0"]
+[node name="FloorBurningPosition" type="Marker2D" parent="Camera2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(72, 21)
+scale = Vector2(0.333333, 0.333333)
+
+[node name="OrbSpawnMarker" type="Marker2D" parent="Camera2D" index="1"]
 position = Vector2(216, -25)
 
-[node name="OrbSpawnMarker2" type="Marker2D" parent="Camera2D" index="1"]
+[node name="OrbSpawnMarker2" type="Marker2D" parent="Camera2D" index="2"]
 position = Vector2(216, 4)
 
-[node name="OrbSpawnMarker3" type="Marker2D" parent="Camera2D" index="2"]
+[node name="OrbSpawnMarker3" type="Marker2D" parent="Camera2D" index="3"]
 position = Vector2(216, 33)
 
-[node name="OrbSpawnMarker4" type="Marker2D" parent="Camera2D" index="3"]
+[node name="OrbSpawnMarker4" type="Marker2D" parent="Camera2D" index="4"]
 position = Vector2(216, 63)
 
-[node name="EnemyOne" parent="Camera2D" index="4" instance=ExtResource("7_lyog6")]
+[node name="EnemyOne" parent="Camera2D" index="5" instance=ExtResource("7_lyog6")]
 position = Vector2(162.667, 30.6667)
 scale = Vector2(0.667, 0.667)
 
-[node name="Area2D" type="Area2D" parent="Camera2D" index="5"]
+[node name="Area2D" type="Area2D" parent="Camera2D" index="6"]
 collision_layer = 4
 collision_mask = 24
 
@@ -62,7 +67,7 @@ collision_mask = 24
 position = Vector2(-213.333, 5.33334)
 shape = SubResource("RectangleShape2D_q6480")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D" index="6"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D" index="7"]
 position = Vector2(-192, -100)
 collision_layer = 32
 
@@ -70,17 +75,13 @@ collision_layer = 32
 position = Vector2(0, 82.6667)
 shape = SubResource("RectangleShape2D_d38td")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="7"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="8"]
 position = Vector2(96, 0)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2" index="0"]
 position = Vector2(0, -18.6667)
 shape = SubResource("RectangleShape2D_a20ec")
-
-[node name="FloorBurningPosition" type="Marker2D" parent="." index="4"]
-unique_name_in_owner = true
-position = Vector2(792, 387)
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("8_bvhom")]
 process_mode = 2
@@ -94,7 +95,7 @@ visible = false
 
 [node name="Orb_Spawn_TImer" type="Timer" parent="Timers" index="0"]
 
-[node name="DamageOrbs" parent="." index="9" instance=ExtResource("11_10bwg")]
+[node name="DamageOrbs" parent="." index="8" instance=ExtResource("11_10bwg")]
 position = Vector2(680, 384)
 
 [connection signal="area_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_area_entered"]

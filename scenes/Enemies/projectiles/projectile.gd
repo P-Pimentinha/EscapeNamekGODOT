@@ -22,7 +22,7 @@ func _physics_process(delta):
 	
 func _on_body_entered(body):
 	if body is PlayerMain:
-		ScoreGlobals.add_current_score(score_to_be_taken)
+		body.take_damage(-5)
 		queue_free()
 		
 

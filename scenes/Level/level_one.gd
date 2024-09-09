@@ -1,6 +1,7 @@
 extends MainRootScene
 
-@export var level_resources: CustomLevelOneResource
+
+@export var score_resource: LevelOneScoreResource
 
 @onready var music_1: AudioStreamPlayer = $Audios/music1
 @onready var music_2: AudioStreamPlayer = $Audios/music2
@@ -27,6 +28,7 @@ func _ready():
 	super()
 	screen_size = get_window().size
 	new_game(scene_new_game)
+	score_resource.reset_total_current_score()
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
@@ -58,10 +60,10 @@ func _on_orb_spawn_t_imer_timeout():
 
 #sound effects
 func change_background_music():
-	if ScoreGlobals.total_current_score > 20 and  music_1.playing:
+	if score_resource.total_current_score > 20 and  music_1.playing:
 		music_1.stop()
 		music_2.play()
-	if ScoreGlobals.total_current_score > 40 and  music_2.playing:	
+	if score_resource.total_current_score > 40 and  music_2.playing:	
 		music_2.stop()
 		music_3.play()
 
@@ -91,7 +93,7 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	if ScoreGlobals.total_current_score >= ScoreGlobals.LVL1_MAX_SCORE:
+	if score_resource.total_current_score >= score_resource.lvl1_max_score:
 		#restart_button.position.x += 100
 		GameControl.pause_game()
 		hud.show_victory_label()
@@ -99,7 +101,7 @@ func player_wins():
 		get_tree().paused = true
 	
 func game_over():
-	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
+	if score_resource.total_current_score < score_resource.min_score:
 		restart_button.show()
 		GameControl.game_over()
 		get_tree().paused = true

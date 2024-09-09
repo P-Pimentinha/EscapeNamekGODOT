@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://beukonk3hblqp"]
+[gd_scene load_steps=6 format=3 uid="uid://beukonk3hblqp"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud_gameplay.gd" id="1_k5th4"]
 [ext_resource type="Texture2D" uid="uid://d4mdcimym0672" path="res://assets/art/HUD/progress_bar/progress_bar_background.png" id="2_dqxev"]
+[ext_resource type="Resource" uid="uid://bi3ah7rxq207w" path="res://scenes/Level/score_resource.tres" id="2_tcfqt"]
 [ext_resource type="Texture2D" uid="uid://cw5yo1vy0tw4s" path="res://assets/art/HUD/progress_bar/progress_bar_overlay.png" id="3_8s0x6"]
 [ext_resource type="Texture2D" uid="uid://kktw1d4ssy51" path="res://assets/art/HUD/progress_bar/progress_bar_progress.png" id="4_42ms6"]
 
 [node name="HudGameplay" type="CanvasLayer"]
 script = ExtResource("1_k5th4")
+Score_Resource = ExtResource("2_tcfqt")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 anchors_preset = 5
