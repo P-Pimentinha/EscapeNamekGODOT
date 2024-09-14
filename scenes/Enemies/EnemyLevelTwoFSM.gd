@@ -8,6 +8,7 @@ const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.t
 #@onready var timer_projectiles: Timer = Timer.new()
 @onready var enemy_one = $"../.."
 @onready var timer_projectiles: Timer = Timer.new()
+@onready var texture_progress_bar = $"../../TextureProgressBar"
 
 func Enter():
 	animated_sprite_2d.position = Vector2(16,16)
@@ -15,6 +16,7 @@ func Enter():
 	hoverboard_sprite.play("reboot")
 	timer_settings()
 	timer_projectiles.timeout.connect(spawn_projectiles)
+	texture_progress_bar.visible = false
 	
 
 func Update(_delta : float):
@@ -36,11 +38,12 @@ func spawn_projectiles():
 	#projectile.connect("animation_finished", end_attack_animation)
 	#projectile.animation_finished.connect(end_attack_animation)
 	enemy_one.add_child(projectile)
+	timer_projectiles.start()
 	
 
 func timer_settings():
 	add_child(timer_projectiles)
 	timer_projectiles.one_shot = true
 	timer_projectiles.autostart = false
-	timer_projectiles.wait_time = 1.0
+	timer_projectiles.wait_time = 2.0
 	timer_projectiles.start()

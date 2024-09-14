@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://cfofpmfo51iol"]
+[gd_scene load_steps=108 format=3 uid="uid://cfofpmfo51iol"]
 
 [ext_resource type="Script" path="res://scenes/Enemies/enemy_one.gd" id="1_oj0rx"]
 [ext_resource type="Texture2D" uid="uid://c6s6fsw0ar84b" path="res://assets/art/Enemies/LevelOne/enemy_2_attack_1.png" id="3_jjt2y"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://scenes/Enemies/EnemyLevelThreeFSM.gd" id="11_ngmin"]
 [ext_resource type="Texture2D" uid="uid://cxr4734875bj2" path="res://assets/art/Enemies/hoverboard/Boss_Life_Bar_Under.png" id="16_6k1n7"]
 [ext_resource type="Texture2D" uid="uid://b0ylsu5qeatbj" path="res://assets/art/Enemies/hoverboard/Boss_Life_Bar_Progress.png" id="17_syumm"]
+[ext_resource type="PackedScene" uid="uid://43q4api7rqc3" path="res://scenes/Enemies/items/shield_boss.tscn" id="21_5bf20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu0qa"]
 atlas = ExtResource("3_jjt2y")
@@ -725,7 +726,7 @@ size = Vector2(40, 40)
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_oj0rx")
-level_to_load = "LevelThree"
+level_to_load = "LevelOne"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8680")
@@ -805,6 +806,9 @@ autostart = true
 [node name="EnergyStrikeTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="ShieldBoss" parent="." instance=ExtResource("21_5bf20")]
+position = Vector2(-109, -300)
 
 [connection signal="timeout" from="Progress_Bar_Timer" to="FSM/LevelThree" method="_on_progress_bar_timer_timeout"]
 [connection signal="timeout" from="Take_Damage_Timer" to="FSM/LevelThree" method="_on_take_damage_timer_timeout"]

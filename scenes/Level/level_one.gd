@@ -3,6 +3,7 @@ extends MainRootScene
 
 @export var score_resource: LevelOneScoreResource
 
+#region On Ready
 @onready var music_1: AudioStreamPlayer = $Audios/music1
 @onready var music_2: AudioStreamPlayer = $Audios/music2
 @onready var music_3 = $Audios/music3
@@ -14,6 +15,7 @@ extends MainRootScene
 @onready var orb_spawn_timer = $Timers/Orb_Spawn_TImer
 @onready var marker_position_arr: Array = [$Camera2D/OrbSpawnMarker, $Camera2D/OrbSpawnMarker2, $Camera2D/OrbSpawnMarker3, $Camera2D/OrbSpawnMarker4]
 @onready var floor_burning_position = $Camera2D/FloorBurningPosition
+#endregion
 
 var orb_scene = preload ("res://scenes/objectives/OrbOfLight.tscn")
 var last_spawned_orb
@@ -24,14 +26,10 @@ const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
 
 var screen_size: Vector2i
  
+#region Processd
 func _ready():
 	super()
-	screen_size = get_window().size
-	new_game(scene_new_game)
-	score_resource.reset_total_current_score()
-	restart_button.get_node("Button").pressed.connect(restart)
-	hud.start_game_hud.connect(start_game)
-	hud.unpause_game_hud.connect(unpause_game.bind(hud))
+	set_scene()
 
 func _physics_process(delta):
 	#update ground position
@@ -43,8 +41,21 @@ func _physics_process(delta):
 	game_over()
 	change_background_music()
 	
+func set_scene():
+	#screen size used to update floor
+	screen_size = get_window().size
+	#sets the initial state of the scene
+	new_game(scene_new_game)
+	#sets the score to Null
+	score_resource.reset_total_current_score()
+	#connets with HUD signals
+	restart_button.get_node("Button").pressed.connect(restart)
+	hud.start_game_hud.connect(start_game)
+	hud.unpause_game_hud.connect(unpause_game.bind(hud))	
+#endregion
 
 #orb logic
+#region Orb Logic
 func spawn_orbs():
 	var random_index = randi() % marker_position_arr.size()
 	var random_value = marker_position_arr[random_index] as Marker2D
@@ -57,8 +68,10 @@ func spawn_orbs():
 
 func _on_orb_spawn_t_imer_timeout():
 	spawn_orbs()
+#endregion
 
 #sound effects
+#region Sound
 func change_background_music():
 	if score_resource.total_current_score > 20 and  music_1.playing:
 		music_1.stop()
@@ -66,8 +79,10 @@ func change_background_music():
 	if score_resource.total_current_score > 40 and  music_2.playing:	
 		music_2.stop()
 		music_3.play()
+#endregion
 
 #background and camera func
+#region Background Camera
 func update_camera_position(delta):
 	camera_2d.position.x += MIN_CAM_SPEED * delta
 
@@ -77,8 +92,10 @@ func _on_despawn_area_2d_area_entered(area):
 func update_ground_position():
 	if camera_2d.position.x - ground.position.x > screen_size.x * 1.5:
 		ground.position.x += screen_size.x
+#endregion
 
 #game state
+#region Game State
 func scene_new_game():
 	restart_button.hide()
 	player.position = PLAYER_START_POSITION
@@ -101,11 +118,12 @@ func player_wins():
 		get_tree().paused = true
 	
 func game_over():
-	if score_resource.total_current_score < score_resource.min_score:
+	if score_resource.total_current_score < score_resource.min_score or player.took_mortal_damage:
 		restart_button.show()
 		GameControl.game_over()
 		get_tree().paused = true
 	
+#endregion
 
 
 

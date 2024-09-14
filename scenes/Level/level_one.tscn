@@ -60,7 +60,6 @@ scale = Vector2(0.333333, 0.333333)
 [node name="EnemyOne" parent="Camera2D" index="5" instance=ExtResource("7_xmely")]
 position = Vector2(144.333, 25)
 scale = Vector2(0.666667, 0.666667)
-level_to_load = "LevelOne"
 
 [node name="despawn_area2D" type="Area2D" parent="Camera2D" index="6"]
 collision_layer = 4
@@ -76,16 +75,7 @@ collision_layer = 32
 position = Vector2(-189.333, -5.83333)
 shape = SubResource("RectangleShape2D_r7jnd")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="8"]
-position = Vector2(82, -3.66666)
-collision_layer = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2" index="0"]
-shape = SubResource("RectangleShape2D_r7jnd")
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/StaticBody2D2" index="1"]
-
-[node name="Area2D" type="Area2D" parent="Camera2D" index="9"]
+[node name="Area2D" type="Area2D" parent="Camera2D" index="8"]
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D" index="0"]
@@ -94,6 +84,7 @@ shape = SubResource("RectangleShape2D_extpp")
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("2_qean3")]
 process_mode = 2
+visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("3_jbkn5")]
 

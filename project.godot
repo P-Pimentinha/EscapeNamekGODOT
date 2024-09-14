@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ScoreGlobals="*res://scripts/globals/score_globals.gd"
+ScoreGlobals="res://scripts/globals/score_globals.gd"
 GameControl="*res://scripts/globals/gameControl.gd"
 
 [display]
@@ -74,6 +74,7 @@ left={
 2d_physics/layer_6="ground"
 2d_physics/layer_7="obstacles"
 2d_physics/layer_8="Floating_Platform"
+2d_physics/layer_9="Shield"
 
 [rendering]
 

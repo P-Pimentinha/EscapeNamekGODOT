@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg0j30lj1231i"]
+[gd_scene load_steps=15 format=3 uid="uid://bg0j30lj1231i"]
 
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_6q7t6"]
 [ext_resource type="Script" path="res://scenes/Level/level_2.gd" id="2_151y6"]
@@ -25,6 +25,9 @@ texture_region_size = Vector2i(300, 60)
 tile_size = Vector2i(300, 60)
 physics_layer_0/collision_layer = 128
 sources/1 = SubResource("TileSetAtlasSource_jwhx2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsu87"]
+size = Vector2(20, 191.333)
 
 [node name="Level2" instance=ExtResource("1_6q7t6")]
 script = ExtResource("2_151y6")
@@ -63,6 +66,14 @@ collision_mask = 24
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camera2D/DespawnArea" index="0"]
 polygon = PackedVector2Array(-149.333, -113.333, -208, -113.333, -208, 121.333, -34.6667, 121.333, -34.6667, 153.333, -237.333, 153.333, -237.333, -124, -237.333, -142.667, -146.667, -137.333)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D" index="2"]
+position = Vector2(-194.667, -92)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D" index="0"]
+position = Vector2(0, 85.6667)
+shape = SubResource("RectangleShape2D_nsu87")
+
 [node name="hud" parent="Control" index="0" instance=ExtResource("5_ynxe1")]
 process_mode = 2
 visible = false
@@ -71,4 +82,5 @@ visible = false
 process_mode = 2
 visible = false
 
+[connection signal="body_entered" from="Mortal_Floor" to="." method="_on_mortal_floor_body_entered"]
 [connection signal="area_entered" from="Camera2D/DespawnArea" to="." method="_on_despawn_area_area_entered"]

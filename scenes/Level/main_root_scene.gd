@@ -14,7 +14,7 @@ func _process(delta):
 func new_game(scene_new_game: Callable):
 	get_tree().paused = true
 	GameControl.new_game()
-#move to different function?
+	#move to different function?
 	scene_new_game.call()
 
 func pause_game(hud: CanvasLayer):

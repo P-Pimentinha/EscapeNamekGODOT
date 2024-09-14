@@ -24,6 +24,7 @@ const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
 
 var screen_size: Vector2i
 
+#region Process
 func _ready():
 	super()
 	screen_size = get_window().size
@@ -47,8 +48,10 @@ func _physics_process(delta):
 	player_wins()
 	game_over()
 	#change_background_music()
+#endregion
 	
 ##orb logic
+#region Orb Logic
 func spawn_damage_orbs():
 	#selects random orb spawn position
 	var random_index = randi() % marker_position_arr.size()
@@ -62,6 +65,7 @@ func spawn_damage_orbs():
 	
 func _on_orb_spawn_t_imer_timeout():
 	spawn_damage_orbs()
+#endregion
 	
 
 #region background and camera func
@@ -92,15 +96,17 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	if ScoreGlobals.total_current_score >= ScoreGlobals.LVL1_MAX_SCORE:
-		#restart_button.position.x += 100
-		GameControl.pause_game()
-		hud.show_victory_label()
-		restart_button.show()
-		get_tree().paused = true
+	#if ScoreGlobals.total_current_score >= ScoreGlobals.LVL1_MAX_SCORE:
+		##restart_button.position.x += 100
+		#GameControl.pause_game()
+		#hud.show_victory_label()
+		#restart_button.show()
+		#get_tree().paused = true
+	pass
 	
+#!!!!!when player changes scene check if player_took_damage var is false or true
 func game_over():
-	if ScoreGlobals.total_current_score < ScoreGlobals.MIN_SCORE:
+	if player.player_took_damage:
 		restart_button.show()
 		GameControl.game_over()
 		get_tree().paused = true

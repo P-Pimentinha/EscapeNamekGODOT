@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgdnild6eohk6"]
+
+[ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_hqs7s"]
+[ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="2_duny8"]
+
+[node name="LevelTestScene" instance=ExtResource("1_hqs7s")]
+
+[node name="EnemyOne" parent="." index="4" instance=ExtResource("2_duny8")]
+position = Vector2(618, 302)
+
+[node name="FloorBurningPosition" type="Marker2D" parent="." index="5"]
+unique_name_in_owner = true
+position = Vector2(108, 392)
+
+[node name="Player" type="Marker2D" parent="." index="6"]
+unique_name_in_owner = true
+position = Vector2(162, 396)

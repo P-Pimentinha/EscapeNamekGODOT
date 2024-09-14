@@ -6,7 +6,8 @@ extends Area2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 var direction: Vector2 = Vector2(-1,0)
 var can_move = false
-var X_DIRECTION: int = -1
+const X_DIRECTION: int = -1
+const ANIMATION_TIME_VALUE = 1
 
 signal animation_finished
 
@@ -22,7 +23,7 @@ func _physics_process(delta):
 	
 func _on_body_entered(body):
 	if body is PlayerMain:
-		body.take_damage(-5)
+		body.take_damage(-1)
 		queue_free()
 		
 
@@ -33,7 +34,7 @@ func move_projectile(delta):
 func projectile_animation():
 	animated_sprite_2d.play()
 	var tween= create_tween()
-	tween.tween_property(animated_sprite_2d, "scale", Vector2(0.6,0.6),1)
+	tween.tween_property(animated_sprite_2d, "scale", Vector2(0.6,0.6),ANIMATION_TIME_VALUE)
 	await tween.finished
 	animation_finished.emit()
 	can_move = true

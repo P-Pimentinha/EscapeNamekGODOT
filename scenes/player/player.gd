@@ -19,6 +19,8 @@ const MAX_SPEED: float = 550
 var current_speed: float = MIN_SPEED
 var added_speed: int = 0
 var accelerate_kill_switch: bool = false
+var player_took_damage: bool = false
+var took_mortal_damage: bool = false
 
 #region movement functions
 func move():
@@ -40,9 +42,13 @@ func aceletate_slow_down():
 		added_speed = 0
 	
 #endregion
+func takes_mortal_damage():
+	took_mortal_damage = true
 
 func take_damage(damage: int):
 	score_resource.add_current_score(damage)
+	# variable to be used in level two and tree
+	player_took_damage = true
 	
 func kill_switch_on_off(value: bool):
 	accelerate_kill_switch = value

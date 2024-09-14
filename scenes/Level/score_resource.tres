@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_efsc6")
 min_score = 0
-lvl1_max_score = 28
+lvl1_max_score = 32

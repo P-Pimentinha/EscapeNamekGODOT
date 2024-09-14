@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://43q4api7rqc3"]
+
+[ext_resource type="Script" path="res://scenes/Enemies/items/shield_boss.gd" id="1_a44u7"]
+[ext_resource type="Texture2D" uid="uid://cc7nriyq4wwi8" path="res://icon.svg" id="1_lbq4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbefo"]
+size = Vector2(46, 659)
+
+[node name="ShieldBoss" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_a44u7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 321)
+shape = SubResource("RectangleShape2D_qbefo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.211765)
+position = Vector2(11.25, 325)
+scale = Vector2(0.152344, 5.07813)
+texture = ExtResource("1_lbq4l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

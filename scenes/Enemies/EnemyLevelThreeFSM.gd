@@ -14,11 +14,11 @@ const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/ener
 @onready var change_color_for_damage = $"../../ChangeColorForDamage"
 @onready var energy_strike_timer = $"../../EnergyStrikeTimer"
 
+
 #endregion
 
 #region Var
 var reboot_stage: int
-#var current_damage_color: String = "black"
 var current_color: String = "black"
 var damage_colors : Array = [
 	"black", "orange", "green", "blue" 
@@ -37,10 +37,7 @@ func Enter():
 	select_animation("reboot",16,16)
 	nodes_to_enable()
 	progress_bar_timer.start()
-	
-	
-	
-	
+	texture_progress_bar.visible = true
 
 func Update(_delta : float):
 	pass
