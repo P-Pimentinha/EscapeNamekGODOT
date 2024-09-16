@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://j2eau5cc4dwg"]
+[gd_scene load_steps=27 format=3 uid="uid://j2eau5cc4dwg"]
 
 [ext_resource type="Script" path="res://scenes/obstacles/EnergyStrikeZone/energy_strike_zone.gd" id="1_ckkyi"]
 [ext_resource type="Texture2D" uid="uid://cwjswvr4fmhor" path="res://assets/art/obstacles/energy_strike_zone/energy_strike_3.png" id="2_ls84y"]
@@ -107,43 +107,57 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnb0p"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_76joi"]
 atlas = ExtResource("3_wcdvn")
 region = Rect2(0, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5pr3h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsnav"]
+atlas = ExtResource("3_wcdvn")
+region = Rect2(149, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxnqw"]
 atlas = ExtResource("3_wcdvn")
 region = Rect2(298, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fyiwy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_goggl"]
 atlas = ExtResource("3_wcdvn")
 region = Rect2(447, 0, 149, 121)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_as2ox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_in5t7"]
+atlas = ExtResource("3_wcdvn")
+region = Rect2(596, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b8la"]
+atlas = ExtResource("3_wcdvn")
+region = Rect2(745, 0, 149, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss4c7"]
 atlas = ExtResource("3_wcdvn")
 region = Rect2(894, 0, 149, 121)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8j55y"]
-atlas = ExtResource("3_wcdvn")
-region = Rect2(1043, 0, 149, 121)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_614s2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wnb0p")
+"texture": SubResource("AtlasTexture_76joi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5pr3h")
+"texture": SubResource("AtlasTexture_gsnav")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fyiwy")
+"texture": SubResource("AtlasTexture_kxnqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_as2ox")
+"texture": SubResource("AtlasTexture_goggl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8j55y")
+"texture": SubResource("AtlasTexture_in5t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b8la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss4c7")
 }],
 "loop": false,
 "name": &"new_animation",
@@ -163,14 +177,15 @@ disabled = true
 [node name="DangerArea" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qmvqr")
 animation = &"animation1"
-frame_progress = 0.17826
 
 [node name="EnergyStrike" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(0, -107)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_614s2")
 animation = &"new_animation"
+frame = 6
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="DangerArea" to="." method="_on_danger_area_animation_finished"]

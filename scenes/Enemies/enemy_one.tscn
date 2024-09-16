@@ -754,13 +754,13 @@ texture = ExtResource("10_wnqwd")
 shape = SubResource("RectangleShape2D_mbw06")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -37)
+position = Vector2(0, -44)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-69, 4)
+position = Vector2(-69, -4)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-69, 57)
+position = Vector2(-69, 47)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1, 18)

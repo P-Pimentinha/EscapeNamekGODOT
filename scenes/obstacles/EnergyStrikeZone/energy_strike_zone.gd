@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@onready var danger_area = $DangerArea
+@onready var danger_area: AnimatedSprite2D = $DangerArea
 @onready var energy_strike = $EnergyStrike
 @onready var collision_shape_2d = $CollisionShape2D
 @export var score_to_be_taken: int = -5

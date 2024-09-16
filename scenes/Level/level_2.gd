@@ -7,10 +7,10 @@ extends MainRootScene
 @onready var restart_button = $Control/CanvasLayer
 @onready var ground = $Ground
 @onready var mortal_floor = $Mortal_Floor
-@onready var tile_map = $TileMap
-@onready var timer_egergy_strike: Timer = Timer.new()
 
-const PLAYER_START_POSITION := Vector2i(100, 528)
+@onready var aamer_egergy_strike: Timer = Timer.new()
+
+const PLAYER_START_POSITION := Vector2i(81, 428)
 const CAM_START_POS := Vector2i(576, 324)
 const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
 

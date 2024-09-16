@@ -10,6 +10,35 @@ const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.t
 @onready var timer_projectiles: Timer = Timer.new()
 @onready var texture_progress_bar = $"../../TextureProgressBar"
 
+var spawn_counter: int = 1
+var spawn_location_dictionary: Dictionary = {
+	1:0,
+	2:1,
+	3:1,
+	4:2,
+	5:1,
+	6:2,
+	7:1,
+	8:1,
+	9:0,
+	10:2,
+	11:1,
+	12:2,
+	13:1,
+	14:0,
+	15:1,
+	16:1,
+	17:1,
+	18:1,
+	19:1,
+	20:1,
+	21:1,
+	22:1,
+	23:1,
+	24:1,
+	25:1,
+}
+
 func Enter():
 	animated_sprite_2d.position = Vector2(16,16)
 	animated_sprite_2d.play("reboot")
@@ -34,16 +63,16 @@ func spawn_projectiles():
 	#animated_sprite_2d.play("attack_1")
 	var projectile = PROJECTILE_SCENE.instantiate() as Area2D
 	var random_index = randi() % marker_2d.size()
-	projectile.position = marker_2d[random_index].position
+	projectile.position = marker_2d[spawn_location_dictionary[spawn_counter]].position
 	#projectile.connect("animation_finished", end_attack_animation)
 	#projectile.animation_finished.connect(end_attack_animation)
 	enemy_one.add_child(projectile)
 	timer_projectiles.start()
-	
+	spawn_counter += 1
 
 func timer_settings():
 	add_child(timer_projectiles)
 	timer_projectiles.one_shot = true
 	timer_projectiles.autostart = false
-	timer_projectiles.wait_time = 2.0
+	timer_projectiles.wait_time = 2.2
 	timer_projectiles.start()
