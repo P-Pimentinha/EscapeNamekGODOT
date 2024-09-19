@@ -10,6 +10,7 @@ extends MainRootScene
 
 @onready var aamer_egergy_strike: Timer = Timer.new()
 
+#const PLAYER_START_POSITION := Vector2i(81, 428)
 const PLAYER_START_POSITION := Vector2i(81, 428)
 const CAM_START_POS := Vector2i(576, 324)
 const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
@@ -20,11 +21,8 @@ var screen_size: Vector2i
 #region Process
 func _ready():
 	super()
-	screen_size = get_window().size
-	new_game(scene_new_game)
-	restart_button.get_node("Button").pressed.connect(restart)
-	hud.start_game_hud.connect(start_game)
-	hud.unpause_game_hud.connect(unpause_game.bind(hud))
+	set_scene()
+	
 	
 
 func _physics_process(delta):
@@ -34,6 +32,14 @@ func _physics_process(delta):
 		update_ground_position()
 	game_over()
 	pause_game(hud)
+
+func set_scene():
+	screen_size = get_window().size
+	new_game(scene_new_game)
+	restart_button.get_node("Button").pressed.connect(restart)
+	hud.start_game_hud.connect(start_game)
+	hud.unpause_game_hud.connect(unpause_game.bind(hud))	
+
 #endregion
 
 

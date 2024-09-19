@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="DamageOrbsData" load_steps=2 format=3 uid="uid://dmq7hcaf2ijjf"]
+
+[ext_resource type="Script" path="res://scenes/objectives/damage_orbs/damage_orbs_data.gd" id="1_jjycc"]
+
+[resource]
+script = ExtResource("1_jjycc")

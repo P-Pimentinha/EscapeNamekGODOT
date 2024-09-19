@@ -15,8 +15,9 @@ extends MainRootScene
 
 #orbs var
 const DAMAGE_ORBS = preload("res://scenes/objectives/damage_orbs/Damage_Orbs.tscn")
-var last_spawned_orb
-var get_gamage_orb_callBack_func
+#var last_spawned_orb
+var get_enemy_damage_function
+
 
 const PLAYER_START_POSITION := Vector2i(100, 528)
 const CAM_START_POS := Vector2i(576, 324)
@@ -27,17 +28,8 @@ var screen_size: Vector2i
 #region Process
 func _ready():
 	super()
-	screen_size = get_window().size
-	new_game(scene_new_game)
-	restart_button.get_node("Button").pressed.connect(restart)
-	hud.start_game_hud.connect(start_game)
-	hud.unpause_game_hud.connect(unpause_game.bind(hud))
-	
-#delete
-	get_gamage_orb_callBack_func = enemy_one.get_node("FSM/LevelThree")
-	#damage_orbs.apply_damage.connect()
-	
-	#object.signal_name.connect(method_name.bind([extra, arguments]))
+	set_scene()
+
 
 func _physics_process(delta):
 	##update ground position
@@ -48,24 +40,33 @@ func _physics_process(delta):
 	player_wins()
 	game_over()
 	#change_background_music()
+
+func set_scene():
+	screen_size = get_window().size
+	new_game(scene_new_game)
+	restart_button.get_node("Button").pressed.connect(restart)
+	hud.start_game_hud.connect(start_game)
+	hud.unpause_game_hud.connect(unpause_game.bind(hud))
+	get_enemy_damage_function = enemy_one.get_node("FSM/LevelThree")
+
 #endregion
 	
 ##orb logic
 #region Orb Logic
 func spawn_damage_orbs():
-	#selects random orb spawn position
+	#selects random spawn position
 	var random_index = randi() % marker_position_arr.size()
 	var spawn_marker = marker_position_arr[random_index] as Marker2D
-	#instantiates the orb and connects the signal
+	#instantiates the orb, sets the position & connects the signal
 	var damage_orb = DAMAGE_ORBS.instantiate() as Area2D
 	damage_orb.position = spawn_marker.global_position
-	#last_spawned_orb = orb.selected_orb.texture
-	damage_orb.connect("apply_damage", get_gamage_orb_callBack_func.chec_if_orb_can_damage)
+	#scene + signal + function to be called
+	damage_orb.connect("apply_damage", get_enemy_damage_function.check_if_orb_can_damage)
 	add_child(damage_orb)
 	
 func _on_orb_spawn_t_imer_timeout():
 	spawn_damage_orbs()
-#endregion
+#endregionaaaaa
 	
 
 #region background and camera func

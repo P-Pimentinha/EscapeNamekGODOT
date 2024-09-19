@@ -730,7 +730,7 @@ level_to_load = "LevelOne"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8680")
-animation = &"reboot2_orange"
+animation = &"reboot1_orange"
 
 [node name="hoverboard_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6, 33)
@@ -792,10 +792,10 @@ texture_under = ExtResource("16_6k1n7")
 texture_progress = ExtResource("17_syumm")
 
 [node name="Progress_Bar_Timer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="Take_Damage_Timer" type="Timer" parent="."]
-wait_time = 0.1
 one_shot = true
 
 [node name="ChangeColorForDamage" type="Timer" parent="."]
@@ -809,6 +809,13 @@ one_shot = true
 
 [node name="ShieldBoss" parent="." instance=ExtResource("21_5bf20")]
 position = Vector2(-109, -300)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -38.0
+offset_top = -77.0
+offset_right = 2.0
+offset_bottom = -54.0
+text = "Hello"
 
 [connection signal="timeout" from="Progress_Bar_Timer" to="FSM/LevelThree" method="_on_progress_bar_timer_timeout"]
 [connection signal="timeout" from="Take_Damage_Timer" to="FSM/LevelThree" method="_on_take_damage_timer_timeout"]

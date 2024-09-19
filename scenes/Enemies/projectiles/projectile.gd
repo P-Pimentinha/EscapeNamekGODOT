@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int = 500
+@export var speed: int = 600
 @export var score_to_be_taken: int = -5
 @onready var sprite_2d = $Sprite2D
 @onready var animated_sprite_2d = $AnimatedSprite2D

@@ -10,6 +10,9 @@ const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.t
 @onready var timer_projectiles: Timer = Timer.new()
 @onready var texture_progress_bar = $"../../TextureProgressBar"
 
+#test del
+@onready var label = $"../../Label"
+
 var spawn_counter: int = 1
 var spawn_location_dictionary: Dictionary = {
 	1:0,
@@ -21,21 +24,21 @@ var spawn_location_dictionary: Dictionary = {
 	7:1,
 	8:1,
 	9:0,
-	10:2,
-	11:1,
-	12:2,
-	13:1,
-	14:0,
-	15:1,
-	16:1,
+	10:1,
+	11:2,
+	12:1,
+	13:2,
+	14:1,
+	15:0,
+	16:0,
 	17:1,
 	18:1,
-	19:1,
+	19:2,
 	20:1,
-	21:1,
+	21:2,
 	22:1,
 	23:1,
-	24:1,
+	24:0,
 	25:1,
 }
 
@@ -68,11 +71,13 @@ func spawn_projectiles():
 	#projectile.animation_finished.connect(end_attack_animation)
 	enemy_one.add_child(projectile)
 	timer_projectiles.start()
+	label.text = str(spawn_counter)
 	spawn_counter += 1
+	
 
 func timer_settings():
 	add_child(timer_projectiles)
 	timer_projectiles.one_shot = true
 	timer_projectiles.autostart = false
-	timer_projectiles.wait_time = 2.2
+	timer_projectiles.wait_time = 2.3
 	timer_projectiles.start()
