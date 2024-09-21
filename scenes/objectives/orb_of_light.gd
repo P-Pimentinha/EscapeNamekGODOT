@@ -8,7 +8,7 @@ var time_passed = 0
 
 
 var array_of_possible_orbs : Array = [
-	{"texture": "blue", "value_to_add": 2},
+	{"texture": "blue", "value_to_add": 3},
 	{"texture": "black", "value_to_add": -3},
 ]
 

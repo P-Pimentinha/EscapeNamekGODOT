@@ -7,13 +7,16 @@ extends MainRootScene
 @onready var restart_button = $Control/CanvasLayer
 @onready var ground = $Ground
 @onready var mortal_floor = $Mortal_Floor
+@onready var winning_time: Timer = Timer.new()
 
+#??
 @onready var aamer_egergy_strike: Timer = Timer.new()
 
 #const PLAYER_START_POSITION := Vector2i(81, 428)
 const PLAYER_START_POSITION := Vector2i(81, 428)
 const CAM_START_POS := Vector2i(576, 324)
 const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
+const WINNING_TIMER: int = 60
 
 var screen_size: Vector2i
 
@@ -39,6 +42,13 @@ func set_scene():
 	restart_button.get_node("Button").pressed.connect(restart)
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))	
+	#set timer
+	add_child(winning_time)
+	winning_time.one_shot = true
+	winning_time.autostart = false
+	winning_time.wait_time = WINNING_TIMER
+	winning_time.timeout.connect(player_wins)
+	winning_time.start()
 
 #endregion
 
@@ -78,13 +88,8 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	#if ScoreGlobals.total_current_score >= ScoreGlobals.LVL1_MAX_SCORE:
-		##restart_button.position.x += 100
-		#GameControl.pause_game()
-		#hud.show_victory_label()
-		#restart_button.show()
-		#get_tree().paused = true
-	pass
+	get_tree().change_scene_to_file("res://scenes/CutScene/cut_scene_one.tscn")
+	
 	
 func game_over():
 	if player.player_took_damage or player.took_mortal_damage:

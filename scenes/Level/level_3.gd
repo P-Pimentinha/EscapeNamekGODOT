@@ -18,7 +18,6 @@ const DAMAGE_ORBS = preload("res://scenes/objectives/damage_orbs/Damage_Orbs.tsc
 #var last_spawned_orb
 var get_enemy_damage_function
 
-
 const PLAYER_START_POSITION := Vector2i(100, 528)
 const CAM_START_POS := Vector2i(576, 324)
 const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
@@ -37,7 +36,6 @@ func _physics_process(delta):
 		update_camera_position(delta)
 		update_ground_position()
 	pause_game(hud)
-	player_wins()
 	game_over()
 	#change_background_music()
 
@@ -48,6 +46,7 @@ func set_scene():
 	hud.start_game_hud.connect(start_game)
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
 	get_enemy_damage_function = enemy_one.get_node("FSM/LevelThree")
+	get_enemy_damage_function.connect("life_reached_zero", player_wins)
 
 #endregion
 	
@@ -97,13 +96,8 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	#if ScoreGlobals.total_current_score >= ScoreGlobals.LVL1_MAX_SCORE:
-		##restart_button.position.x += 100
-		#GameControl.pause_game()
-		#hud.show_victory_label()
-		#restart_button.show()
-		#get_tree().paused = true
-	pass
+	print("Player Wins")
+	
 	
 #!!!!!when player changes scene check if player_took_damage var is false or true
 func game_over():

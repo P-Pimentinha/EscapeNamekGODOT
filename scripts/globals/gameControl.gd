@@ -36,3 +36,10 @@ func unpause_game():
 	is_game_running = true
 	is_player_on_menu = false
 	is_new_game = false
+
+func on_cutscene():
+	is_game_paused = false
+	is_game_running = false
+	is_player_on_menu = false
+	is_new_game = false
+	

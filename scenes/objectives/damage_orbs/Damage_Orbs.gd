@@ -7,30 +7,29 @@ signal apply_damage
 
 var selected_orb: String
 
-var array_of_possible_orbs : Array = [
-	"black", "orange", "green", "blue" 
-]
+#var array_of_possible_orbs : Array = [
+	#"black", "orange", "green", "blue" 
+#]
 
 func _ready():	
 	instanciate_orb()
 
 func instanciate_orb():
 	if !DAMAGE_ORB_DATA_RESOURCE.last_color_selected:
-		#randomly selects the orb
-		var random_index = randi() % array_of_possible_orbs.size()
-		selected_orb = array_of_possible_orbs[random_index]
+		#randomly selects the orb Color
+		
+		selected_orb = DAMAGE_ORB_DATA_RESOURCE.get_next_color()
 		#sets the texture
 		animated_sprite_2d.play(selected_orb)
 		DAMAGE_ORB_DATA_RESOURCE.last_color_selected = selected_orb
 	else:
 		var new_color = DAMAGE_ORB_DATA_RESOURCE.last_color_selected
 		while new_color == DAMAGE_ORB_DATA_RESOURCE.last_color_selected:
-			var random_index = randi() % array_of_possible_orbs.size()
-			new_color = array_of_possible_orbs[random_index]
+			new_color = DAMAGE_ORB_DATA_RESOURCE.get_next_color()
 		DAMAGE_ORB_DATA_RESOURCE.last_color_selected = new_color
 		selected_orb = new_color
 		animated_sprite_2d.play(selected_orb)
-		
+	print(DAMAGE_ORB_DATA_RESOURCE.colors)		
 		
 	
 	

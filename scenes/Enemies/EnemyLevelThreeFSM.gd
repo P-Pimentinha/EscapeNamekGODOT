@@ -13,7 +13,7 @@ const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/ener
 @onready var dps_reboot_2_texture = $"../../dps_reboot_2"
 @onready var change_color_for_damage = $"../../ChangeColorForDamage"
 @onready var energy_strike_timer = $"../../EnergyStrikeTimer"
-
+signal life_reached_zero
 
 #endregion
 
@@ -49,15 +49,12 @@ func Exit():
 
 #health_bar
 func _on_progress_bar_timer_timeout():
-		texture_progress_bar.value += 5
+		texture_progress_bar.value += 7
 		progress_bar_timer.start()
 		#set_animation()
 
-
 #region Damage Functions
 func check_if_orb_can_damage(orb_color: String):
-	print(current_color)
-	print(orb_color)
 	if orb_color == current_color:
 		take_damage()
 		#set_reboot_stage()
@@ -67,14 +64,15 @@ func check_if_orb_can_damage(orb_color: String):
 
 
 func take_damage():
-	print("Take Damage")
 	set_damage_texture()
 	#timer that will disable the damage texture starts
 	damage_texture_timer.start()
 	#health bar timer progression is interrupted
 	progress_bar_timer.stop()
 	#damage is applied
-	texture_progress_bar.value -= 5
+	texture_progress_bar.value -= 50
+	if texture_progress_bar.value <= 0:
+		life_reached_zero.emit()
 	#starts health bar timer
 	progress_bar_timer.start()
 	
@@ -91,7 +89,7 @@ func set_animation():
 	animated_sprite_2d.play("reboot" + str(reboot_stage) + "_" + current_color)
 	
 func set_damage_texture():
-	print("texture: On")
+
 	if texture_progress_bar.value > 75:
 		dps_reboot_1_texture.visible = true
 	else:
@@ -108,7 +106,6 @@ func _on_change_color_for_damage_timeout():
 	
 	
 func _on_take_damage_timer_timeout():
-	print("texture: Off")
 	#disables all dps textures
 	dps_reboot_1_texture.visible = false
 	dps_reboot_2_texture.visible = false
@@ -143,7 +140,7 @@ func select_animation(animation: String, position_x: int, position_y: int):
 func set_scene():
 	texture_progress_bar.visible = true
 	energy_strike_timer.start()
-	texture_progress_bar.value = 50
+	texture_progress_bar.value = 2
 	progress_bar_timer.start()
 	texture_progress_bar.visible = true
 #endregion

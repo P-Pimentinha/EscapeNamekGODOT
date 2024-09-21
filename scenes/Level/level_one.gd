@@ -112,10 +112,11 @@ func start_game():
 func player_wins():
 	if score_resource.total_current_score >= score_resource.lvl1_max_score:
 		#restart_button.position.x += 100
-		GameControl.pause_game()
-		hud.show_victory_label()
-		restart_button.show()
-		get_tree().paused = true
+		#GameControl.pause_game()
+		#hud.show_victory_label()
+		#restart_button.show()
+		#get_tree().paused = true
+		get_tree().change_scene_to_file("res://scenes/CutScene/cut_scene_one.tscn")
 	
 func game_over():
 	if score_resource.total_current_score < score_resource.min_score or player.took_mortal_damage:
