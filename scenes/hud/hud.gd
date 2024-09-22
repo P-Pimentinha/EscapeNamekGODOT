@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var win_label = $WinLabel
 @onready var background_texture = $background_texture
 @onready var main_menu = $main_menu
-@onready var keybinding_menu = $keybinding_menu
+@onready var optnions_menu = $OptionsMenu
 
 signal unpause_game_hud
 signal start_game_hud
@@ -25,21 +25,21 @@ func show_victory_label():
 #menu
 func hide_hud():
 	main_menu.visible = false
-	keybinding_menu.hide()
+	optnions_menu.hide()
 	background_texture.hide()
 
 func show_hud():
 	main_menu.visible = true
-	#keybinding_menu.show()
+	#optnions_menu.show()
 	background_texture.show()
 
 func show_key_bindings():
 	main_menu.hide()
-	keybinding_menu.show()
+	optnions_menu.show()
 
 func return_initial_menu():
 	main_menu.show()
-	keybinding_menu.hide()
+	optnions_menu.hide()
 
 func menu_controls():
 	if Input.is_action_just_pressed("right") and GameControl.is_new_game:
@@ -50,3 +50,4 @@ func menu_controls():
 		show_key_bindings()
 	if GameControl.is_player_on_menu and Input.is_action_just_pressed("menu_return"):
 		return_initial_menu()
+

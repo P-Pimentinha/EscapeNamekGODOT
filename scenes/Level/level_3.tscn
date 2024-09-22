@@ -16,7 +16,7 @@
 size = Vector2(20, 242.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d38td"]
-size = Vector2(20, 202.667)
+size = Vector2(12.6667, 202.667)
 
 [node name="Level3" instance=ExtResource("1_jpnqj")]
 script = ExtResource("2_3dxca")
@@ -70,7 +70,15 @@ position = Vector2(-192, -100)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D" index="0"]
-position = Vector2(0, 82.6667)
+position = Vector2(2.33333, 82.6667)
+shape = SubResource("RectangleShape2D_d38td")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="8"]
+position = Vector2(104, -100)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2" index="0"]
+position = Vector2(3.66666, 82.6667)
 shape = SubResource("RectangleShape2D_d38td")
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("8_bvhom")]

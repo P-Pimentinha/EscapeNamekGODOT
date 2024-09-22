@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lpgbh3a740ln"]
+[gd_scene load_steps=5 format=3 uid="uid://lpgbh3a740ln"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_d37rk"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="1_jan38"]
 [ext_resource type="Texture2D" uid="uid://dy8vvnse0lrvv" path="res://assets/art/HUD/Color_Rect.png" id="3_3h4pa"]
+[ext_resource type="Script" path="res://scenes/hud/OptionsMenu.gd" id="4_f2xhl"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_d37rk")
@@ -41,71 +42,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="main_menu" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -230.5
+offset_top = -142.5
+offset_right = 230.5
+offset_bottom = 142.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="StartLabel2" type="Label" parent="main_menu"]
-layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "2 Points
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartLabel3" type="Label" parent="main_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "3 Points"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartLabel4" type="Label" parent="main_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "-4 Points 
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartLabel7" type="Label" parent="main_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 4
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartLabel5" type="Label" parent="main_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "Reach 100 Points"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="StartLabel8" type="Label" parent="main_menu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/separation = 50
 
 [node name="StartLabel6" type="Label" parent="main_menu"]
 layout_mode = 2
@@ -116,17 +66,75 @@ text = "PRESS \"D\" TO PLAY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartLabel9" type="Label" parent="main_menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="main_menu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="main_menu/HBoxContainer"]
+custom_minimum_size = Vector2(180, 70)
+layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 31
+text = "  Options  "
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="main_menu"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="main_menu/HBoxContainer2"]
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Tips & Tricks"
+
+[node name="OptionsMenu" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.5
+offset_top = -58.0
+offset_right = 159.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_f2xhl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="OptionsMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_jan38")
 theme_override_font_sizes/font_size = 20
-text = "
-\"K\" TO CHECK THE KEYS"
+text = "Volume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="keybinding_menu" type="VBoxContainer" parent="."]
+[node name="VolumeSlider" type="HSlider" parent="OptionsMenu/HBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+
+[node name="StartLabel4" type="Label" parent="OptionsMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_jan38")
+theme_override_font_sizes/font_size = 24
+text = "Press \"R\" to go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TipeMenuMain" type="VBoxContainer" parent="."]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -141,33 +149,77 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="StartLabel3" type="Label" parent="keybinding_menu"]
+[node name="Label" type="Label" parent="TipeMenuMain"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "Use \"Space To JUMP\""
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Level1"
 
-[node name="StartLabel5" type="Label" parent="keybinding_menu"]
+[node name="Label2" type="Label" parent="TipeMenuMain"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 40
-text = "
+text = "Level2"
+
+[node name="Label3" type="Label" parent="TipeMenuMain"]
+layout_mode = 2
+text = "Level3"
+
+[node name="Label4" type="Label" parent="TipeMenuMain"]
+layout_mode = 2
+text = "Press R to Return"
+
+[node name="TipsMenuLvL1" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -20.0
+offset_right = 53.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TipsMenuLvL1"]
+layout_mode = 2
+text = "TipsMenuLvl1
 "
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="StartLabel4" type="Label" parent="keybinding_menu"]
+[node name="TipsMenuLvL2" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -20.0
+offset_right = 53.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TipsMenuLvL2"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_jan38")
-theme_override_font_sizes/font_size = 24
-text = "Press \"R\" to go Back"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "TipsMenuLvl2
+"
+
+[node name="TipsMenuLvL3" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TipsMenuLvL3"]
+layout_mode = 2
+text = "TipsMenuLvl3"
+
+[connection signal="value_changed" from="OptionsMenu/HBoxContainer/VolumeSlider" to="OptionsMenu" method="_on_volume_slider_value_changed"]

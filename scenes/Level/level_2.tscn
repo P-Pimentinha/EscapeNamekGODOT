@@ -85,7 +85,7 @@ physics_layer_0/collision_layer = 128
 sources/3 = SubResource("TileSetAtlasSource_nc3br")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsu87"]
-size = Vector2(20, 191.333)
+size = Vector2(10.0003, 191.333)
 
 [node name="Level2" instance=ExtResource("1_6q7t6")]
 script = ExtResource("2_151y6")
@@ -130,7 +130,14 @@ position = Vector2(-194.667, -92)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D" index="0"]
-position = Vector2(0, 85.6667)
+position = Vector2(8.00035, 85.6667)
+shape = SubResource("RectangleShape2D_nsu87")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D" index="3"]
+position = Vector2(93.3334, -4)
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/StaticBody2D2" index="0"]
 shape = SubResource("RectangleShape2D_nsu87")
 
 [node name="hud" parent="Control" index="0" instance=ExtResource("5_ynxe1")]

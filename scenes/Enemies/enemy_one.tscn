@@ -809,14 +809,9 @@ wait_time = 3.0
 one_shot = true
 
 [node name="ShieldBoss" parent="." instance=ExtResource("21_5bf20")]
+visible = false
 position = Vector2(-109, -300)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -38.0
-offset_top = -77.0
-offset_right = 2.0
-offset_bottom = -54.0
-text = "Hello"
+monitoring = false
 
 [connection signal="timeout" from="Progress_Bar_Timer" to="FSM/LevelThree" method="_on_progress_bar_timer_timeout"]
 [connection signal="timeout" from="Take_Damage_Timer" to="FSM/LevelThree" method="_on_take_damage_timer_timeout"]

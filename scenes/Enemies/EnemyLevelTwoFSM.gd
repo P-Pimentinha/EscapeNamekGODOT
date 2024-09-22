@@ -10,8 +10,6 @@ const PROJECTILE_SCENE = preload ("res://scenes/Enemies/projectiles/projectile.t
 @onready var timer_projectiles: Timer = Timer.new()
 @onready var texture_progress_bar = $"../../TextureProgressBar"
 
-#test del
-@onready var label = $"../../Label"
 
 var spawn_counter: int = 1
 var spawn_location_dictionary: Dictionary = {
@@ -71,7 +69,6 @@ func spawn_projectiles():
 	#projectile.animation_finished.connect(end_attack_animation)
 	enemy_one.add_child(projectile)
 	timer_projectiles.start()
-	label.text = str(spawn_counter)
 	spawn_counter += 1
 	
 
