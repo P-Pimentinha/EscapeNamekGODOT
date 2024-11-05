@@ -6,7 +6,7 @@ const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/ener
 @onready var enemy_one = $"../.."
 @onready var animated_sprite_2d = $"../../AnimatedSprite2D"
 @onready var hoverboard_sprite = $"../../hoverboard_sprite"
-@onready var texture_progress_bar = $"../../TextureProgressBar"
+@onready var health_progress_bar = $"../../TextureProgressBar"
 @onready var progress_bar_timer = $"../../Progress_Bar_Timer"
 @onready var damage_texture_timer = $"../../Take_Damage_Timer"
 @onready var dps_reboot_1_texture = $"../../dps_reboot_1"
@@ -14,6 +14,7 @@ const ENERGY_STRIKE_ZONE = preload("res://scenes/obstacles/EnergyStrikeZone/ener
 @onready var change_color_for_damage = $"../../ChangeColorForDamage"
 @onready var energy_strike_timer = $"../../EnergyStrikeTimer"
 signal life_reached_zero
+signal life_reached_100
 
 #endregion
 
@@ -23,6 +24,10 @@ var current_color: String = "black"
 var damage_colors: Array = [
 	"black", "orange", "green", "blue"
 ]
+var boss_health: int = 50:
+	set(new_value):
+		boss_health = new_value
+		health_progress_bar.value = boss_health
 
 const ENERGY_STRIKE_Y_POSITION = 560
 #endregion
@@ -49,7 +54,9 @@ func Exit():
 
 #health_bar
 func _on_progress_bar_timer_timeout():
-		texture_progress_bar.value += 7
+		boss_health += 7
+		if boss_health >= 100:
+			life_reached_100.emit()
 		progress_bar_timer.start()
 		#set_animation()
 
@@ -70,17 +77,17 @@ func take_damage():
 	#health bar timer progression is interrupted
 	progress_bar_timer.stop()
 	#damage is applied
-	texture_progress_bar.value -= 50
-	if texture_progress_bar.value <= 0:
+	boss_health-= 7
+	if boss_health <= 0:
 		life_reached_zero.emit()
 	#starts health bar timer
 	progress_bar_timer.start()
 	
 
 func set_reboot_stage():
-	if texture_progress_bar.value > 75:
+	if boss_health > 75:
 		reboot_stage = 1
-	elif texture_progress_bar.value > 35:
+	elif boss_health > 35:
 		reboot_stage = 2
 	else:
 		reboot_stage = 3
@@ -90,7 +97,7 @@ func set_animation():
 	
 func set_damage_texture():
 
-	if texture_progress_bar.value > 75:
+	if boss_health > 75:
 		dps_reboot_1_texture.visible = true
 	else:
 		dps_reboot_2_texture.visible = true
@@ -138,9 +145,9 @@ func select_animation(animation: String, position_x: int, position_y: int):
 	animated_sprite_2d.position = Vector2(position_x, position_y)
 
 func set_scene():
-	texture_progress_bar.visible = true
+	health_progress_bar.visible = true
 	energy_strike_timer.start()
-	texture_progress_bar.value = 2
+	health_progress_bar.value = boss_health
 	progress_bar_timer.start()
-	texture_progress_bar.visible = true
+	health_progress_bar.visible = true
 #endregion

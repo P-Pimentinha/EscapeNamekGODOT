@@ -47,6 +47,7 @@ func set_scene():
 	hud.unpause_game_hud.connect(unpause_game.bind(hud))
 	get_enemy_damage_function = enemy_one.get_node("FSM/LevelThree")
 	get_enemy_damage_function.connect("life_reached_zero", player_wins)
+	get_enemy_damage_function.connect("life_reached_100", game_over)
 
 #endregion
 	

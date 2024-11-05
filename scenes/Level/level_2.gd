@@ -97,6 +97,3 @@ func game_over():
 		GameControl.game_over()
 		get_tree().paused = true
 #endregion
-
-
-

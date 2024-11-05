@@ -1,12 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://lpgbh3a740ln"]
+[gd_scene load_steps=12 format=3 uid="uid://lpgbh3a740ln"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_d37rk"]
 [ext_resource type="FontFile" uid="uid://s15272omc2m3" path="res://assets/fonts/retro.ttf" id="1_jan38"]
 [ext_resource type="Texture2D" uid="uid://dfo6fdq0vr00u" path="res://assets/art/HUD/Color_Rect.png" id="3_3h4pa"]
+[ext_resource type="Texture2D" uid="uid://beecrkf3tktyg" path="res://assets/art/HUD/slider/main_bar.png" id="3_66e0y"]
 [ext_resource type="Script" path="res://scenes/hud/OptionsMenu.gd" id="4_f2xhl"]
 [ext_resource type="Texture2D" uid="uid://d1tbbhs4pjinb" path="res://assets/art/HUD/buttons/button_1.png" id="4_f8ctd"]
-[ext_resource type="Script" path="res://scenes/hud/TipMenuMain.gd" id="5_mfgt0"]
-[ext_resource type="Texture2D" uid="uid://codjgo8d260k7" path="res://assets/art/HUD/buttons/button_2.png" id="7_xqhig"]
+[ext_resource type="Texture2D" uid="uid://xuxw603f2wys" path="res://assets/art/HUD/slider/background.png" id="6_21r6g"]
+[ext_resource type="Texture2D" uid="uid://bwo25s8r6dfo4" path="res://assets/art/HUD/slider/grabber.png" id="7_ddktr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dtbwt"]
+texture = ExtResource("6_21r6g")
+texture_margin_top = 10.0
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dbxgn"]
+texture = ExtResource("6_21r6g")
+texture_margin_top = 10.0
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ks4lx"]
+texture = ExtResource("6_21r6g")
+expand_margin_top = 10.0
+draw_center = false
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_d37rk")
@@ -117,8 +133,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_f2xhl")
 
+[node name="MainBar" type="Sprite2D" parent="OptionsMenu"]
+position = Vector2(214.5, 18)
+scale = Vector2(1.07, 1)
+texture = ExtResource("3_66e0y")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="VolumeLabel" type="Label" parent="OptionsMenu/HBoxContainer"]
@@ -127,7 +149,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_jan38")
 theme_override_font_sizes/font_size = 20
-text = "Volume"
+text = "Volume "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -136,49 +158,43 @@ custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_icons/grabber = ExtResource("7_ddktr")
+theme_override_icons/grabber_highlight = ExtResource("7_ddktr")
+theme_override_icons/grabber_disabled = ExtResource("7_ddktr")
+theme_override_styles/slider = SubResource("StyleBoxTexture_dtbwt")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_dbxgn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_ks4lx")
 max_value = 1.0
 step = 0.05
+ticks_on_borders = true
 
 [node name="TipMenuMain" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -349.5
+offset_top = -179.0
+offset_right = 349.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 15
 alignment = 1
-script = ExtResource("5_mfgt0")
 
-[node name="Button" type="Button" parent="TipMenuMain"]
+[node name="Label" type="Label" parent="TipMenuMain"]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Tips Level 1"
-icon = ExtResource("7_xqhig")
-icon_alignment = 1
-
-[node name="Button2" type="Button" parent="TipMenuMain"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Tips Level 2"
-icon = ExtResource("7_xqhig")
-icon_alignment = 1
-
-[node name="Button3" type="Button" parent="TipMenuMain"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Tips Level 3"
-icon = ExtResource("7_xqhig")
-icon_alignment = 1
+theme_override_font_sizes/font_size = 20
+text = "Level1: 
+   •	   Gather Blue Orbs in Order to Gather Enough Energy to Stop the Boss
+   •	   Avoid the Attacks and the Black Orbs
+Level2:
+   •	   Survive for 1 Minute. Avoid the Attacks and Do Not Touch the Floor
+Level3:
+   •	   Grab The Orbs that Match the Boss and Stop Him from Regenerating
+"
 
 [node name="TipsMenuLvL1" type="VBoxContainer" parent="."]
 visible = false
@@ -256,6 +272,3 @@ text = "Press R To Return To Main Menu"
 [connection signal="pressed" from="main_menu/HBoxContainer/Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="main_menu/HBoxContainer2/Button" to="." method="_on_tips_button_pressed"]
 [connection signal="value_changed" from="OptionsMenu/HBoxContainer/VolumeSlider" to="OptionsMenu" method="_on_volume_slider_value_changed"]
-[connection signal="pressed" from="TipMenuMain/Button" to="TipMenuMain" method="_on_tips1_button_pressed"]
-[connection signal="pressed" from="TipMenuMain/Button2" to="TipMenuMain" method="_on_tips2_button_pressed"]
-[connection signal="pressed" from="TipMenuMain/Button3" to="TipMenuMain" method="_on_tips3_button_pressed"]
