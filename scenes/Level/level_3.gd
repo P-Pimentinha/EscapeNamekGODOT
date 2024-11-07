@@ -97,7 +97,8 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	print("Player Wins")
+	GameLevelController.set_current_level(3)
+	get_tree().change_scene_to_file("res://scenes/Cutscenes/cutscene_level.tscn")
 	
 	
 #!!!!!when player changes scene check if player_took_damage var is false or true

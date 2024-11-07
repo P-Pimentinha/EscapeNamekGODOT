@@ -12,12 +12,17 @@ extends CanvasLayer
 @onready var tips_menu_lv_l_3 = $TipsMenuLvL3
 @onready var return_init_menu_label = $return_init_menu_label
 @onready var array_of_sub_menus: Array = [main_menu,options_menu, tip_menu_main, tips_menu_lv_l_1, tips_menu_lv_l_2, tips_menu_lv_l_3]
+@onready var level_1 = $main_menu/Level1
+@onready var level_2 = $main_menu/Level2
+@onready var level_3 = $main_menu/Level3
+
 
 signal unpause_game_hud
 signal start_game_hud
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	select_label_level()
 	show()
 	main_menu.show()
 	return_init_menu_label.hide()
@@ -30,7 +35,19 @@ func _physics_process(delta):
 #labels
 func show_victory_label():
 	win_label.visible = true
+
+func select_label_level():
+	level_1.visible = false
+	level_2.visible = false
+	level_3.visible = false
 	
+	if GameLevelController.current_level == 1:
+		level_1.visible = true
+	elif GameLevelController.current_level == 2:
+		level_2.visible = true
+	elif GameLevelController.current_level == 3:
+		level_3.visible = true
+
 #menu
 func hide_hud():
 	visible = false
@@ -77,6 +94,3 @@ func _on_tips_button_pressed():
 	main_menu.hide()
 	tip_menu_main.show()
 	return_init_menu_label.show()
-
-
-

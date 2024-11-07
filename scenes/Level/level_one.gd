@@ -116,8 +116,8 @@ func player_wins():
 		#hud.show_victory_label()
 		#restart_button.show()
 		#get_tree().paused = true
-		get_tree().change_scene_to_file("res://scenes/CutScene/cut_scene_one.tscn")
-	
+		GameLevelController.set_current_level(2)
+		get_tree().change_scene_to_file("res://scenes/Cutscenes/cutscene_level.tscn")
 func game_over():
 	if score_resource.total_current_score < score_resource.min_score or player.took_mortal_damage:
 		restart_button.show()

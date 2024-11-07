@@ -68,10 +68,10 @@ func _on_despawn_area_area_entered(area):
 	area.queue_free()
 
 func _on_mortal_floor_body_entered(body: PlayerMain):
-	##disabled to be able to test game
-	#body.takes_mortal_damage()
-	print("taking damage from floor")
-	pass
+	#disabled to be able to test game
+	body.takes_mortal_damage()
+	#print("taking damage from floor")
+	#pass
 	
 #region Game State
 func scene_new_game():
@@ -88,7 +88,8 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	get_tree().change_scene_to_file("res://scenes/CutScene/cut_scene_one.tscn")
+	GameLevelController.set_current_level(3)
+	get_tree().change_scene_to_file("res://scenes/Cutscenes/cutscene_level.tscn")
 	
 	
 func game_over():

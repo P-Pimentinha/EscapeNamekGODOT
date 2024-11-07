@@ -31,3 +31,6 @@ func unpause_game(hud):
 
 func restart():
 	get_tree().reload_current_scene()
+
+func set_current_level(level: int):
+	GameLevelController.current_level = level

@@ -2,14 +2,11 @@ extends Area2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 #@onready var data_container = "res://scenes/objectives/damage_orbs/damage_orb_data_resource.tres"
-const DAMAGE_ORB_DATA_RESOURCE = preload("res://scenes/objectives/damage_orbs/damage_orb_data_resource.tres")
+var DAMAGE_ORB_DATA_RESOURCE = preload("res://scenes/objectives/damage_orbs/damage_orb_data_resource.tres")
 signal apply_damage
 
 var selected_orb: String
 
-#var array_of_possible_orbs : Array = [
-	#"black", "orange", "green", "blue" 
-#]
 
 func _ready():	
 	instanciate_orb()
@@ -96,4 +93,3 @@ func _on_body_entered(body):
 	#
 	## Set random position or other properties for the circle
 	#circle_instance.position = Vector2(randf_range(0, 500), randf_range(0, 500))
-

@@ -9,8 +9,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	skip_scene()
 
 
 func _on_timer_timeout():
 	get_tree().change_scene_to_file("res://scenes/Level/level_one.tscn")
+
+func skip_scene():
+	if Input.is_action_just_pressed("jump"):
+		get_tree().change_scene_to_file("res://scenes/Level/level_one.tscn")

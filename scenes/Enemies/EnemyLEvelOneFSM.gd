@@ -23,7 +23,7 @@ const ENERGY_STRIKE_ZONE_SCENE = preload("res://scenes/obstacles/EnergyStrikeZon
 
 #region Variables
 const ENERGY_STRIKE_Y_POSITION = 560
-var timers = [timer_egergy_strike, timer_three_projectiles, three_projectiles_logic]
+#var timers = [timer_egergy_strike, timer_three_projectiles, three_projectiles_logic]
 
 #endregion
 

@@ -12,4 +12,3 @@ func add_current_score(value: int):
 
 func reset_total_current_score():
 	total_current_score = 0
-
