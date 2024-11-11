@@ -1,12 +1,79 @@
-[gd_scene load_steps=3 format=3 uid="uid://0d8hbp1qwenh"]
+[gd_scene load_steps=10 format=3 uid="uid://0d8hbp1qwenh"]
 
 [ext_resource type="Script" path="res://test/del.gd" id="1_dpbe7"]
-[ext_resource type="Texture2D" uid="uid://cc7nriyq4wwi8" path="res://icon.svg" id="2_0lkxs"]
+[ext_resource type="Texture2D" uid="uid://c6p6ny2ax554l" path="res://icon.svg" id="2_0lkxs"]
+[ext_resource type="Texture2D" uid="uid://dg8k3gi4s6m8k" path="res://test/animation_test/pink_circle1.jpg" id="3_4wab1"]
+[ext_resource type="Texture2D" uid="uid://c7yxltknf57jf" path="res://test/animation_test/pink_circle2.jpg" id="4_4bb1k"]
+[ext_resource type="Texture2D" uid="uid://bu2lw0546o2qk" path="res://test/animation_test/green_circle1.jpg" id="5_sp0rr"]
+[ext_resource type="Texture2D" uid="uid://vcbpucmk65w8" path="res://test/animation_test/green_circle2.jpg" id="6_o35uy"]
+
+[sub_resource type="Animation" id="Animation_0cb1p"]
+resource_name = "CutSceneTest"
+length = 60.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"animation_one"
+}, {
+"args": [],
+"method": &"stop_all_animations"
+}, {
+"args": [2],
+"method": &"animation_two"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtx2x"]
+_data = {
+"CutSceneTest": SubResource("Animation_0cb1p")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g0uco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4wab1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4bb1k")
+}],
+"loop": true,
+"name": &"first",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_sp0rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o35uy")
+}],
+"loop": true,
+"name": &"second",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dpbe7")
-amplitude = 1000.0
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(520, 240)
 texture = ExtResource("2_0lkxs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qtx2x")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g0uco")
+animation = &"second"
+centered = false

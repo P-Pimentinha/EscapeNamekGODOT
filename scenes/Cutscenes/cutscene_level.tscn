@@ -1,16 +1,281 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo7unpv6wybsv"]
+[gd_scene load_steps=16 format=3 uid="uid://bo7unpv6wybsv"]
 
 [ext_resource type="Script" path="res://scenes/Cutscenes/cutscene_level.gd" id="1_i627b"]
+[ext_resource type="Texture2D" uid="uid://cxh0sb0ucwvfd" path="res://assets/cutscenes/Level2/Player_Body1.png" id="2_qc5hr"]
+[ext_resource type="Texture2D" uid="uid://i7sin0ga70cp" path="res://assets/cutscenes/Level2/Player_Body2.png" id="3_ajkr4"]
+[ext_resource type="Texture2D" uid="uid://dpi3n0vr34jfy" path="res://assets/cutscenes/Level2/Energy_Orb1.png" id="4_3sy6s"]
+[ext_resource type="Texture2D" uid="uid://dulnfj7gtg08q" path="res://assets/cutscenes/Level2/Energy_Beam1.png" id="4_f4quw"]
+[ext_resource type="Texture2D" uid="uid://bupyct3k22me" path="res://assets/cutscenes/Level2/Boss1.png" id="4_y0vwx"]
+[ext_resource type="Texture2D" uid="uid://bhyknehivjdsf" path="res://assets/cutscenes/Level2/Boss2.png" id="5_1ydbe"]
+[ext_resource type="Texture2D" uid="uid://bqpd27saer881" path="res://assets/cutscenes/Level2/Energy_Beam2.png" id="5_5jod2"]
+[ext_resource type="Texture2D" uid="uid://dlhldakghv1p7" path="res://assets/cutscenes/Level2/Energy_Orb2.png" id="5_ri54u"]
+[ext_resource type="Texture2D" uid="uid://bsxiivnwwlxlr" path="res://assets/cutscenes/Level2/Boss3.png" id="6_070qk"]
+[ext_resource type="Texture2D" uid="uid://de75et74kja85" path="res://assets/cutscenes/Level2/energy_beam_zoom.png" id="6_sq5l4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6qil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y0vwx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1ydbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_070qk")
+}],
+"loop": true,
+"name": &"boss",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f4quw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5jod2")
+}],
+"loop": true,
+"name": &"energy_beam",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_sq5l4")
+}],
+"loop": true,
+"name": &"energy_beam_zoom",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_3sy6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ri54u")
+}],
+"loop": true,
+"name": &"energy_orb",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_2ltbg"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level2/Body1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Level2/Body2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level2/Level2_animatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Level2/Level2_animatedSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Level2/Level2_animatedSprite:animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"energy_orb"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level2/Level2_animatedSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_1srbs"]
+resource_name = "new_animation"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level2/Body1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Level2/Body2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level2/Level2_animatedSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Level2/Level2_animatedSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(257, 290), Vector2(888, 297), Vector2(576, 324)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["energy_orb"],
+"method": &"play_animation"
+}, {
+"args": ["energy_beam"],
+"method": &"play_animation"
+}, {
+"args": ["energy_beam_zoom"],
+"method": &"play_animation"
+}, {
+"args": ["boss"],
+"method": &"play_animation"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level2/Level2_animatedSprite:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [&"energy_orb", &"energy_beam", &"energy_beam_zoom", &"boss"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Level2/Level2_animatedSprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(8, 8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kca0"]
+_data = {
+"RESET": SubResource("Animation_2ltbg"),
+"new_animation": SubResource("Animation_1srbs")
+}
 
 [node name="CutsceneLevelOne" type="Node2D"]
 script = ExtResource("1_i627b")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 1161.0
 offset_bottom = 653.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Level2" type="Node2D" parent="."]
+
+[node name="Body1" type="Sprite2D" parent="Level2"]
+visible = false
+position = Vector2(279, 318)
+scale = Vector2(8, 8)
+texture = ExtResource("2_qc5hr")
+
+[node name="Body2" type="Sprite2D" parent="Level2"]
+visible = false
+position = Vector2(309, 324)
+scale = Vector2(8, 8)
+texture = ExtResource("3_ajkr4")
+
+[node name="Level2_animatedSprite" type="AnimatedSprite2D" parent="Level2"]
+visible = false
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_b6qil")
+animation = &"energy_orb"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8kca0")
+}
+autoplay = "new_animation"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
