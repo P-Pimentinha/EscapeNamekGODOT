@@ -120,17 +120,17 @@ func _on_take_damage_timer_timeout():
 
 #region Apply Damage To Player
 func spawn_energy_strike():
-	#var parent_node = enemy_one.get_node("%FloorBurningPosition")
-	#var position_node = enemy_one.get_node("%Player")
-	#var energy_strike_zone = ENERGY_STRIKE_ZONE.instantiate() as Area2D
-	#
-	#var random_x_offset = randi_range(-120, 120)
-	#parent_node.add_child(energy_strike_zone)
-	##energy_strike_zone.global_position.x = position_node.global_position.x + Vector2(random_x_offset,0)
-	#energy_strike_zone.global_position.x = position_node.global_position.x
-	#energy_strike_zone.global_position.y = ENERGY_STRIKE_Y_POSITION
-	#energy_strike_timer.start()
-	pass
+	var parent_node = enemy_one.get_node("%FloorBurningPosition")
+	var position_node = enemy_one.get_node("%Player")
+	var energy_strike_zone = ENERGY_STRIKE_ZONE.instantiate() as Area2D
+	
+	var random_x_offset = randi_range(-120, 120)
+	parent_node.add_child(energy_strike_zone)
+	#energy_strike_zone.global_position.x = position_node.global_position.x + Vector2(random_x_offset,0)
+	energy_strike_zone.global_position.x = position_node.global_position.x
+	energy_strike_zone.global_position.y = ENERGY_STRIKE_Y_POSITION
+	energy_strike_timer.start()
+	
 
 func _on_energy_strike_timer_timeout():
 	spawn_energy_strike()

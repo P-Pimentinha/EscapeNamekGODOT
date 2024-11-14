@@ -730,7 +730,7 @@ level_to_load = "LevelOne"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b8680")
-animation = &"reboot1_orange"
+animation = &"reboot3"
 
 [node name="hoverboard_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-6, 33)

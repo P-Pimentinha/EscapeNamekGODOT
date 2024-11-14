@@ -85,8 +85,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_jan38")
 theme_override_font_sizes/font_size = 24
-text = "Catch the Blue Orbs to gather energy
-while avoiding the Black Orbs and attacks from Galaxar"
+text = "Galaxar is on the run! 
+Gather energy by collecting the blue orbs 
+to unleash a powerful attack.
+
+Dodge his incoming strikes 
+and steer clear of the deadly black orbs!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -105,13 +109,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level3" type="Label" parent="main_menu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_jan38")
 theme_override_font_sizes/font_size = 24
-text = "Match the Orbs with Galaxar's energy to damage him 
-and finish him once and for all."
+text = "Galaxar awaits! 
+Flashing through shifting colors to keep you guessing. 
+Catch the matching orbs to damage him, dodge 
+his attacks, and strike when the moment is right
+ to bring him down!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

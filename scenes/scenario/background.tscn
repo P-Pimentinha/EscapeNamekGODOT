@@ -106,6 +106,7 @@ animations = [{
 
 [node name="BackGround" type="ParallaxBackground"]
 script = ExtResource("1_ne1bc")
+level = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_h1pke")
@@ -156,7 +157,6 @@ centered = false
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor"]
 position = Vector2(1152, 324)
 sprite_frames = SubResource("SpriteFrames_ibmsf")
-frame_progress = 0.482819
 
 [node name="Audios" type="Node2D" parent="."]
 

@@ -4,7 +4,7 @@ class_name DamageOrbsData
 var last_color_selected: String
 
 var colors: Dictionary = {"blue": 0, "black": 0, "green": 0, "orange": 0}
-var max_orbs: int = 4
+var max_orbs: int = 3
 var max_diff: int = 2
 
 func get_next_color() -> String:

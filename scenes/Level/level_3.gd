@@ -97,7 +97,7 @@ func start_game():
 	GameControl.game_running()
 
 func player_wins():
-	GameLevelController.set_current_level(3)
+	GameLevelController.set_current_level(4)
 	get_tree().change_scene_to_file("res://scenes/Cutscenes/cutscene_level.tscn")
 	
 	

@@ -26,11 +26,11 @@ func instanciate_orb():
 		DAMAGE_ORB_DATA_RESOURCE.last_color_selected = new_color
 		selected_orb = new_color
 		animated_sprite_2d.play(selected_orb)
-	print(DAMAGE_ORB_DATA_RESOURCE.colors)		
+		
 		
 	
 	
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	apply_damage.emit(selected_orb)
 	queue_free()
 

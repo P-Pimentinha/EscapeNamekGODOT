@@ -1,8 +1,7 @@
 extends ParallaxBackground
 
-
 @onready var electric_floor_animation = $Floor/AnimatedSprite2D
-
+@onready var islands_sprite_2d = $Islands
 @onready var terrain_texture = $Floor/Sprite2D
 @onready var storm_timer = $storm_timer
 @onready var audio_thunder = $Audios/audio_thunder
@@ -13,6 +12,9 @@ const arr_thunderstorm_animations = ["last_cloud", "mid_cloud", "top_cloud"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	if level == 3:
+		level_3_setup()
 	enable_electric_floor_animation()
 	storm_timer.wait_time = randf_range(0.5,2)
 	terrain_texture.texture = terrain
@@ -33,3 +35,6 @@ func enable_electric_floor_animation():
 	else:
 		electric_floor_animation.visible = false
 		electric_floor_animation.stop()
+
+func level_3_setup():
+	islands_sprite_2d.visible = false

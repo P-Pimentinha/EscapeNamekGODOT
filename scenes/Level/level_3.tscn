@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://7ek31hwf0dn3" path="res://scenes/Level/main_root_scene.tscn" id="1_jpnqj"]
 [ext_resource type="Script" path="res://scenes/Level/level_3.gd" id="2_3dxca"]
 [ext_resource type="PackedScene" uid="uid://cu6xe5rlnnmx" path="res://scenes/scenario/background.tscn" id="3_n3d0t"]
-[ext_resource type="Texture2D" uid="uid://dqswpqmpmsins" path="res://assets/art/background/dark/level2/background_terrain_level2.png" id="4_x5svq"]
+[ext_resource type="Texture2D" uid="uid://6ul0thss6rtt" path="res://assets/art/background/dark/ground_level15.png" id="4_wocey"]
 [ext_resource type="PackedScene" uid="uid://b37fx1mhr2f28" path="res://scenes/player/player.tscn" id="5_nwclq"]
 [ext_resource type="PackedScene" uid="uid://c5g2ejkxlsyb5" path="res://scenes/scenario/ground.tscn" id="6_8mlab"]
 [ext_resource type="PackedScene" uid="uid://cfofpmfo51iol" path="res://scenes/Enemies/enemy_one.tscn" id="7_lyog6"]
@@ -22,7 +22,7 @@ size = Vector2(12.6667, 202.667)
 script = ExtResource("2_3dxca")
 
 [node name="BackGround" parent="." index="0" instance=ExtResource("3_n3d0t")]
-terrain = ExtResource("4_x5svq")
+terrain = ExtResource("4_wocey")
 level = 3
 
 [node name="Player" parent="." index="1" instance=ExtResource("5_nwclq")]
@@ -86,6 +86,7 @@ process_mode = 2
 visible = false
 
 [node name="HudGameplay" parent="Control" index="1" instance=ExtResource("9_oo7w5")]
+visible = false
 
 [node name="GameOver" parent="Control" index="2" instance=ExtResource("10_wyp71")]
 process_mode = 2
