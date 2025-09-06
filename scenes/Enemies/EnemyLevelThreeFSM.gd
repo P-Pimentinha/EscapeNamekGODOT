@@ -117,7 +117,6 @@ func _on_take_damage_timer_timeout():
 	dps_reboot_1_texture.visible = false
 	dps_reboot_2_texture.visible = false
 #endregion
-
 #region Apply Damage To Player
 func spawn_energy_strike():
 	var parent_node = enemy_one.get_node("%FloorBurningPosition")

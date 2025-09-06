@@ -16,7 +16,7 @@ extends MainRootScene
 const PLAYER_START_POSITION := Vector2i(81, 428)
 const CAM_START_POS := Vector2i(576, 324)
 const MIN_CAM_SPEED: int = PlayerMain.MIN_SPEED
-const WINNING_TIMER: int = 60
+const WINNING_TIMER: int = 30
 
 var screen_size: Vector2i
 

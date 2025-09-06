@@ -44,7 +44,3 @@ func switch_textures():
 	sprite_2d.visible = false
 	animated_sprite_2d.visible = true
 	animated_sprite_2d.play()
-
-
-
-

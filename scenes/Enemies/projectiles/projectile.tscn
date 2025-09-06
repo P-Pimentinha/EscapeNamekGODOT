@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cdnmgcnm6k57u" path="res://assets/art/obstacles/enemy_projectiles/enemy_projectile_2_animation.png" id="3_ib58d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_10vcm"]
-radius = 16.0
-height = 32.0
+radius = 13.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnyhx"]
 atlas = ExtResource("3_ib58d")
@@ -60,6 +60,6 @@ texture = ExtResource("2_j4nm4")
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_h5k23")
 frame = 3
-frame_progress = 0.561131
+frame_progress = 0.568075
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
